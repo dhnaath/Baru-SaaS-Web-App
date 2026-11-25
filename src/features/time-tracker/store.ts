@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { createWorkspaceStorage } from "../../core/persistStorage";
+import { filterExactSeedRecords } from "../../core/legacySeed";
+import { LEGACY_TIME_SEED_FINGERPRINTS } from "./legacySeedFingerprints";
 import {
   TimeEntry,
   TimeActivity,
@@ -53,128 +55,13 @@ const INITIAL_ACTIVITIES: TimeActivity[] = [
   { id: "act-4", name: "Riset Teknologi & Arsitektur", isBillableDefault: true },
 ];
 
-const INITIAL_RATE_CARDS: RateCard[] = [
-  {
-    id: "rc-1",
-    appliesTo: "Senior Solution Architect",
-    hourlyRate: 850000,
-    currency: "IDR",
-    effectiveFrom: "2026-01-01",
-  },
-  {
-    id: "rc-2",
-    appliesTo: "Project Manager #03",
-    hourlyRate: 600000,
-    currency: "IDR",
-    effectiveFrom: "2026-01-01",
-  },
-  {
-    id: "rc-3",
-    appliesTo: "PT Mandiri Sekuritas Project",
-    hourlyRate: 950000,
-    currency: "IDR",
-    effectiveFrom: "2026-06-01",
-  },
-];
+export const INITIAL_RATE_CARDS: RateCard[] = [];
 
-const INITIAL_ENTRIES: TimeEntry[] = [
-  {
-    id: "te-01",
-    userId: "usr-01",
-    userName: "Bambang Pamungkas",
-    linkedItem: {
-      sourceType: "task",
-      sourceId: "task-audit-a",
-      title: "Audit Keamanan Sistem Klien A",
-    },
-    startAt: "2026-09-22T09:00:00Z",
-    endAt: "2026-09-22T10:25:00Z",
-    durationMinutes: 85,
-    isBillable: true,
-    note: "Pemeriksaan log otentikasi dan integritas API endpoint (diimpor dari Focus Session).",
-    source: "imported_from_focus_session",
-    status: "approved",
-    createdAt: "2026-09-22T10:30:00Z",
-  },
-  {
-    id: "te-02",
-    userId: "usr-01",
-    userName: "Bambang Pamungkas",
-    linkedItem: {
-      sourceType: "project",
-      sourceId: "proj-101",
-      title: "Project Enterprise v3 Refactor",
-    },
-    startAt: "2026-09-22T13:00:00Z",
-    endAt: "2026-09-22T16:00:00Z",
-    durationMinutes: 180,
-    isBillable: true,
-    note: "Slicing high-performance UI state dan integrasi TanStack Router.",
-    source: "timer",
-    status: "submitted",
-    createdAt: "2026-09-22T16:05:00Z",
-  },
-  {
-    id: "te-03",
-    userId: "usr-01",
-    userName: "Bambang Pamungkas",
-    linkedItem: {
-      sourceType: "activity",
-      sourceId: "act-2",
-      title: "Internal Team Sync",
-    },
-    startAt: "2026-09-23T08:30:00Z",
-    endAt: "2026-09-23T09:30:00Z",
-    durationMinutes: 60,
-    isBillable: false,
-    note: "Sinkronisasi sprint mingguan & pembagian alokasi tugas.",
-    source: "manual",
-    status: "submitted",
-    createdAt: "2026-09-23T09:35:00Z",
-  },
-  {
-    id: "te-04",
-    userId: "usr-01",
-    userName: "Bambang Pamungkas",
-    linkedItem: {
-      sourceType: "project",
-      sourceId: "proj-101",
-      title: "Project Enterprise v3 Refactor",
-    },
-    durationMinutes: 120,
-    isBillable: true,
-    note: "Unit testing state store persistensi dan validasi boundary.",
-    source: "manual",
-    status: "draft",
-    createdAt: "2026-09-24T08:00:00Z",
-  },
-];
+export const INITIAL_ENTRIES: TimeEntry[] = [];
 
-const INITIAL_TIMESHEETS: Timesheet[] = [
-  {
-    id: "ts-01",
-    userId: "usr-01",
-    userName: "Bambang Pamungkas",
-    periodStart: "2026-09-18",
-    periodEnd: "2026-09-24",
-    entryIds: ["te-01", "te-02", "te-03"],
-    totalMinutes: 325,
-    status: "submitted",
-    approverId: "mgr-01",
-  },
-];
+export const INITIAL_TIMESHEETS: Timesheet[] = [];
 
-const INITIAL_APPROVAL_RECORDS: TimeApprovalRecord[] = [
-  {
-    id: "ap-01",
-    timesheetId: "ts-01",
-    approverId: "mgr-01",
-    approverName: "Farhan Hakim (Delivery Lead)",
-    decision: "approved",
-    comments: "Seluruh jam billable sesuai SLA kontrak klien.",
-    decidedAt: "2026-09-23T17:00:00Z",
-  },
-];
+export const INITIAL_APPROVAL_RECORDS: TimeApprovalRecord[] = [];
 
 export const useTimeTrackerStore = create<TimeTrackerStore>()(
   persist(
@@ -360,6 +247,29 @@ export const useTimeTrackerStore = create<TimeTrackerStore>()(
     {
       name: "ecosystem-time-tracker-storage",
       storage: createWorkspaceStorage(),
+      version: 1,
+      migrate: (persistedState: unknown) => {
+        const state = (persistedState || {}) as Partial<TimeTrackerStore>;
+        return {
+          ...state,
+          entries: filterExactSeedRecords(
+            Array.isArray(state.entries) ? state.entries : [],
+            LEGACY_TIME_SEED_FINGERPRINTS.entries,
+          ),
+          timesheets: filterExactSeedRecords(
+            Array.isArray(state.timesheets) ? state.timesheets : [],
+            LEGACY_TIME_SEED_FINGERPRINTS.timesheets,
+          ),
+          rateCards: filterExactSeedRecords(
+            Array.isArray(state.rateCards) ? state.rateCards : [],
+            LEGACY_TIME_SEED_FINGERPRINTS.rateCards,
+          ),
+          approvalRecords: filterExactSeedRecords(
+            Array.isArray(state.approvalRecords) ? state.approvalRecords : [],
+            LEGACY_TIME_SEED_FINGERPRINTS.approvalRecords,
+          ),
+        } as TimeTrackerStore;
+      },
     }
   )
 );

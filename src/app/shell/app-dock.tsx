@@ -12,6 +12,8 @@ import {
   Search,
   Gem,
   TrendingUp,
+  Ellipsis,
+  X,
 } from "lucide-react";
 import { LauncherLayersIcon } from "@/components/icons/LauncherLayersIcon";
 import { useFavorites } from "@/hooks/useFavorites";
@@ -74,7 +76,7 @@ function DockIcon({
 
   const content = (
     <div className="relative flex flex-col items-center justify-end">
-      <div className="absolute -top-11 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-neutral-900/90 text-white text-xs rounded-md shadow-xl opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-50 flex items-center gap-1.5 backdrop-blur-sm border border-white/10">
+      <div data-mobile-dock-tooltip="true" className="absolute -top-11 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-neutral-900/90 text-white text-xs rounded-md shadow-xl opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-50 flex items-center gap-1.5 backdrop-blur-sm border border-white/10">
         <span>{item.label}</span>
         {item.isFavorite && (
           <span className="text-[10px] text-amber-300 font-semibold flex items-center gap-0.5">
@@ -88,6 +90,7 @@ function DockIcon({
         )}
       </div>
       <motion.div
+        data-mobile-dock-icon="true"
         ref={ref}
         style={{ width, height: width, borderRadius: "9999px" }}
         className={`flex items-center justify-center cursor-pointer transition-colors relative z-20 rounded-full ${
@@ -176,6 +179,11 @@ export function AppDock({
   const mouseX = useMotionValue(Infinity);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { favorites } = useFavorites();
+  const [isMobileMoreOpen, setIsMobileMoreOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMobileMoreOpen(false);
+  }, [pathname]);
 
   const [activeMode, setActiveMode] = useState<string>("personal");
 
@@ -573,6 +581,102 @@ export function AppDock({
     );
   };
 
+  const mobilePrimaryItems: Array<{ item: DockItemConfig; label: string }> = [
+    { item: homeLauncherItems[0], label: "Menu" },
+    { item: homeLauncherItems[1], label: "Beranda" },
+    {
+      item: {
+        id: "mobile-search",
+        label: "Cari",
+        icon: Search,
+        onClick: () => {
+          setIsMobileMoreOpen(false);
+          if (onSearch) onSearch();
+          else window.dispatchEvent(new CustomEvent("aio_open_search"));
+        },
+      },
+      label: "Cari",
+    },
+    { item: valueMarketItems[0], label: "Nilai" },
+    { item: valueMarketItems[1], label: "Harga" },
+  ];
+
+  const getMobileItemActive = (item: DockItemConfig) => {
+    if (item.id === "recent") return Boolean(isRecentOpen);
+    if (item.id === "taskbar") return Boolean(isTaskbarOpen);
+    if (item.id === "quick-capture") return Boolean(isQuickCaptureOpen);
+    if (item.id === "/shortcut") return Boolean(isShortcutOpen) || pathname === "/shortcut";
+    if (item.id === "/terminal") return Boolean(isTerminalOpen) || pathname === "/terminal";
+    if (item.id === "expand") return Boolean(isExpandOpen);
+    if (item.id === "mobile-search") return false;
+    return item.isActive !== undefined
+      ? item.isActive
+      : pathname === item.id || (item.id.startsWith("/") && item.id !== "/" && pathname.startsWith(item.id));
+  };
+
+  const renderMobileItemContent = (item: DockItemConfig, label: string, isActive: boolean) => {
+    const ItemIcon = item.icon;
+    return (
+      <>
+        <span className={`mobile-dock-item-icon ${isActive ? "is-active" : ""}`}>
+          <ItemIcon className="size-[19px]" strokeWidth={2} />
+        </span>
+        <span className="mobile-dock-item-label">{label}</span>
+      </>
+    );
+  };
+
+  const renderMobileMoreItem = (item: DockItemConfig) => {
+    if (item.isSeparator) {
+      return <div key={item.id} className="mobile-dock-more-divider" role="separator" />;
+    }
+
+    const isActive = getMobileItemActive(item);
+    const itemLabel = item.isFavorite ? `${item.label} · Favorit` : item.label;
+    const ItemIcon = item.icon;
+    const content = (
+      <>
+        <span className={`mobile-dock-more-icon ${isActive ? "is-active" : ""}`}>
+          <ItemIcon className="size-[18px]" strokeWidth={2} />
+        </span>
+        <span className="mobile-dock-more-label">{itemLabel}</span>
+      </>
+    );
+
+    if (item.onClick) {
+      return (
+        <button
+          key={item.id}
+          type="button"
+          className={`mobile-dock-more-item ${isActive ? "is-active" : ""}`}
+          onClick={() => {
+            setIsMobileMoreOpen(false);
+            item.onClick?.();
+          }}
+        >
+          {content}
+        </button>
+      );
+    }
+
+    const toPath = item.id.split("?")[0];
+    const toSearch = item.id.includes("?")
+      ? Object.fromEntries(new URLSearchParams(item.id.split("?")[1]))
+      : undefined;
+
+    return (
+      <Link
+        key={item.id}
+        to={toPath as any}
+        search={toSearch as any}
+        className={`mobile-dock-more-item ${isActive ? "is-active" : ""}`}
+        onClick={() => setIsMobileMoreOpen(false)}
+      >
+        {content}
+      </Link>
+    );
+  };
+
   const dockSpring = {
     type: "spring" as const,
     stiffness: 350,
@@ -589,7 +693,90 @@ export function AppDock({
 
   return (
     <>
+      <nav data-mobile-dock-shell="true" aria-label="Navigasi utama">
+        {isMobileMoreOpen && (
+          <button
+            type="button"
+            className="mobile-dock-scrim"
+            aria-label="Tutup menu akses cepat"
+            onClick={() => setIsMobileMoreOpen(false)}
+          />
+        )}
+
+        {isMobileMoreOpen && (
+          <section className="mobile-dock-more" role="dialog" aria-label="Favorit dan akses cepat">
+            <div className="mobile-dock-more-heading">
+              <span>Akses cepat</span>
+              <button
+                type="button"
+                aria-label="Tutup akses cepat"
+                onClick={() => setIsMobileMoreOpen(false)}
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+            <div className="mobile-dock-more-grid">
+              {mainDockItems.filter((item) => item.id !== "expand").map(renderMobileMoreItem)}
+            </div>
+          </section>
+        )}
+
+        <div className="mobile-dock-bar">
+          {mobilePrimaryItems.map(({ item, label }) => {
+            const isActive = getMobileItemActive(item);
+            const content = renderMobileItemContent(item, label, isActive);
+            const className = `mobile-dock-item ${isActive ? "is-active" : ""}`;
+
+            if (item.onClick) {
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  className={className}
+                  aria-label={item.label}
+                  onClick={item.onClick}
+                >
+                  {content}
+                </button>
+              );
+            }
+
+            const toPath = item.id.split("?")[0];
+            const toSearch = item.id.includes("?")
+              ? Object.fromEntries(new URLSearchParams(item.id.split("?")[1]))
+              : undefined;
+
+            return (
+              <Link
+                key={item.id}
+                to={toPath as any}
+                search={toSearch as any}
+                className={className}
+                aria-label={item.label}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {content}
+              </Link>
+            );
+          })}
+
+          <button
+            type="button"
+            className={`mobile-dock-item ${isMobileMoreOpen ? "is-active" : ""}`}
+            aria-label="Lainnya"
+            aria-expanded={isMobileMoreOpen}
+            onClick={() => setIsMobileMoreOpen((open) => !open)}
+          >
+            <span className={`mobile-dock-item-icon ${isMobileMoreOpen ? "is-active" : ""}`}>
+              <Ellipsis className="size-5" />
+            </span>
+            <span className="mobile-dock-item-label">Lainnya</span>
+          </button>
+        </div>
+      </nav>
+
       <div
+        data-mobile-dock="true"
         className={`fixed z-50 flex items-center justify-center gap-2.5 sm:gap-3 pointer-events-none transition-[left,bottom] duration-300 ease-out ${
           sidebarShift ? "max-w-[calc(100vw-87px)]" : "max-w-[95vw]"
         } ${isMinimized ? "bottom-2" : "bottom-5"}`}
@@ -606,6 +793,7 @@ export function AppDock({
       >
         {/* Pill Bar 1: Home & Launcher (Terpisah Mandiri) */}
         <motion.div
+          data-mobile-dock-section="home"
           initial={false}
           animate={
             isMinimized
@@ -632,6 +820,7 @@ export function AppDock({
 
         {/* Pill Bar 2: Applied Value & Monitor Price (Terpisah Mandiri) */}
         <motion.div
+          data-mobile-dock-section="shortcuts"
           initial={false}
           animate={
             isMinimized
@@ -658,6 +847,7 @@ export function AppDock({
 
         {/* Pill Bar 3: Pinned Favorites & System Utilities */}
         <motion.div
+          data-mobile-dock-section="utilities"
           initial={false}
           animate={
             isMinimized

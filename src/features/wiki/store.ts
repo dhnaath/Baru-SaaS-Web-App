@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { getRaw, setRaw } from "../../core/rawStorage";
+import { filterExactSeedRecords, getRecordFingerprint, LEGACY_DYNAMIC_SEED_FIELDS } from "../../core/legacySeed";
+import { LEGACY_WIKI_SEED_FINGERPRINTS } from "./legacySeedFingerprints";
 import {
   WikiData,
   WikiSpace,
@@ -16,59 +18,7 @@ const DEFAULT_SPACES: WikiSpace[] = [
   { id: "spc-prod", name: "Product & Operations", description: "Roadmap, desain fungsional, dan panduan pengguna", visibility: "team" },
 ];
 
-const DEFAULT_PAGES: WikiPage[] = [
-  {
-    id: "page-deploy",
-    title: "Deployment Process",
-    content: `# Deployment Process
-
-Prosedur standar rilis produksi untuk seluruh service:
-
-1. Pastikan semua automated test lulus di [[CI/CD Pipeline]].
-2. Cek apakah ada perubahan skema database pada [[Database Migration SOP]].
-3. Lakukan deploy menggunakan canary release sebesar 10% traffic.
-
-Terkait juga dengan arsitektur [[Microservices Architecture]].`,
-    spaceId: "spc-eng",
-    parentPageId: null,
-    tags: ["DevOps", "Release", "CI/CD"],
-    status: "published",
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 20).toISOString(),
-    updatedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2).toISOString(),
-  },
-  {
-    id: "page-cicd",
-    title: "CI/CD Pipeline",
-    content: `# CI/CD Pipeline
-
-Pipeline kami menggunakan GitHub Actions dan ArgoCD untuk continuous deployment.
-
-Setiap merge ke branch main akan mentrigger build container image dan manifest update ke repository GitOps.
-
-Halaman rujukan:
-- [[Deployment Process]]
-- [[Monitoring & Observability]]`,
-    spaceId: "spc-eng",
-    parentPageId: null,
-    tags: ["CI/CD", "GitOps", "Infra"],
-    status: "published",
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 18).toISOString(),
-    updatedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 1).toISOString(),
-  },
-  {
-    id: "page-orphan",
-    title: "Catatan Arsitektur Lama (Unlinked)",
-    content: `# Catatan Arsitektur Lama
-
-Halaman dokumentasi sementara yang belum memiliki tautan masuk maupun keluar.`,
-    spaceId: "spc-eng",
-    parentPageId: null,
-    tags: ["Draft"],
-    status: "draft",
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 10).toISOString(),
-    updatedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 10).toISOString(),
-  },
-];
+export const DEFAULT_PAGES: WikiPage[] = [];
 
 const DEFAULT_TEMPLATES: WikiTemplate[] = [
   {
@@ -112,28 +62,12 @@ function computeLinks(pages: WikiPage[]): WikiLink[] {
   return links;
 }
 
-const INITIAL_DATA: WikiData = {
+export const INITIAL_DATA: WikiData = {
   spaces: DEFAULT_SPACES,
   pages: DEFAULT_PAGES,
   links: computeLinks(DEFAULT_PAGES),
-  revisions: [
-    {
-      id: "rev-w-1",
-      pageId: "page-deploy",
-      content: DEFAULT_PAGES[0].content,
-      editedBy: "Lead DevOps",
-      editedAt: DEFAULT_PAGES[0].updatedAt,
-      changeSummary: "Inisiasi awal SOP deployment",
-    },
-  ],
-  contributors: [
-    {
-      pageId: "page-deploy",
-      userId: "user-devops",
-      editCount: 1,
-      lastEditedAt: DEFAULT_PAGES[0].updatedAt,
-    },
-  ],
+  revisions: [],
+  contributors: [],
   templates: DEFAULT_TEMPLATES,
 };
 
@@ -141,16 +75,28 @@ function loadData(): WikiData {
   try {
     const raw = getRaw(STORAGE_KEY);
     if (!raw) return INITIAL_DATA;
-    const parsed = JSON.parse(raw);
-    const pages = Array.isArray(parsed.pages) ? parsed.pages : INITIAL_DATA.pages;
+    const parsed = JSON.parse(raw) as Partial<WikiData>;
+    const pages = Array.isArray(parsed.pages)
+      ? filterExactSeedRecords<WikiPage>(parsed.pages, LEGACY_WIKI_SEED_FINGERPRINTS.pages, LEGACY_DYNAMIC_SEED_FIELDS)
+      : INITIAL_DATA.pages;
     return {
       ...INITIAL_DATA,
       ...parsed,
       spaces: Array.isArray(parsed.spaces) ? parsed.spaces : INITIAL_DATA.spaces,
       pages,
       links: computeLinks(pages),
-      revisions: Array.isArray(parsed.revisions) ? parsed.revisions : INITIAL_DATA.revisions,
-      contributors: Array.isArray(parsed.contributors) ? parsed.contributors : INITIAL_DATA.contributors,
+      revisions: Array.isArray(parsed.revisions)
+        ? filterExactSeedRecords<WikiRevision>(parsed.revisions, LEGACY_WIKI_SEED_FINGERPRINTS.revisions, LEGACY_DYNAMIC_SEED_FIELDS)
+        : INITIAL_DATA.revisions,
+      // Contributors have a composite pageId/userId identity rather than an `id` field;
+      // compare the complete record fingerprint so only the exact legacy entry is retired.
+      contributors: Array.isArray(parsed.contributors)
+        ? parsed.contributors.filter((contributor) =>
+            !Object.values(LEGACY_WIKI_SEED_FINGERPRINTS.contributors).includes(
+              getRecordFingerprint(contributor, LEGACY_DYNAMIC_SEED_FIELDS),
+            ),
+          )
+        : INITIAL_DATA.contributors,
       templates: Array.isArray(parsed.templates) ? parsed.templates : INITIAL_DATA.templates,
     };
   } catch {

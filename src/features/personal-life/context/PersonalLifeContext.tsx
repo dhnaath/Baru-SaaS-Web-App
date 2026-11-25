@@ -57,6 +57,8 @@ import {
   INITIAL_CERTIFICATES,
   INITIAL_TRAVEL_ITEMS,
 } from '../data/initialPersonalData';
+import { filterExactSeedRecords, getRecordFingerprint } from '../../../core/legacySeed';
+import { LEGACY_PERSONAL_SEED_FINGERPRINTS } from '../legacySeedFingerprints';
 
 interface PersonalLifeContextType {
   workspace: WorkspaceMode;
@@ -250,7 +252,25 @@ const STORAGE_KEY_PREFIX = 'life_planner_os_v1_';
 function loadFromStorage<T>(key: string, fallback: T): T {
   try {
     const item = localStorage.getItem(STORAGE_KEY_PREFIX + key);
-    return item ? JSON.parse(item) : fallback;
+    const value: unknown = item ? JSON.parse(item) : fallback;
+    if (Array.isArray(value)) {
+      const cleaned = filterExactSeedRecords(
+        value as Array<{ id?: unknown }>,
+        LEGACY_PERSONAL_SEED_FINGERPRINTS[key],
+      );
+      if (item && cleaned.length !== value.length) saveToStorage(key, cleaned);
+      return cleaned as T;
+    }
+    if (
+      key === 'weightProfile' &&
+      value &&
+      typeof value === 'object' &&
+      getRecordFingerprint(value) === LEGACY_PERSONAL_SEED_FINGERPRINTS.weightProfile?.object
+    ) {
+      if (item) saveToStorage(key, fallback);
+      return fallback;
+    }
+    return value as T;
   } catch {
     return fallback;
   }

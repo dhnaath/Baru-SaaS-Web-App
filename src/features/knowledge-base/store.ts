@@ -9,6 +9,8 @@ import {
   Contributor,
 } from "./types";
 import { getRaw, setRaw } from "../../core/rawStorage";
+import { filterExactSeedRecords, LEGACY_DYNAMIC_SEED_FIELDS } from "../../core/legacySeed";
+import { LEGACY_KB_SEED_FINGERPRINTS } from "./legacySeedFingerprints";
 
 const STORAGE_KEY = "aio_knowledge_base_data_v1";
 
@@ -19,132 +21,17 @@ const DEFAULT_CATEGORIES: Category[] = [
   { id: "cat-biz", name: "Operasional & Bisnis", parentCategoryId: null, description: "Proses operasional, kepatuhan, dan strategi" },
 ];
 
-const DEFAULT_ARTICLES: Article[] = [
-  {
-    id: "art-1",
-    title: "Prinsip Dasar Valuasi Arus Kas Diskonto (DCF)",
-    summary: "Konsep menilai bisnis dari nilai kini arus kas bebas masa depan untuk menjamin dasar valuasi yang objektif.",
-    content: `# Prinsip Dasar DCF
+export const DEFAULT_ARTICLES: Article[] = [];
 
-Discounted Cash Flow (DCF) adalah metode valuasi yang menghitung nilai kini dari proyeksi arus kas bebas perusahaan.
+export const DEFAULT_SOURCES: Source[] = [];
 
-## Mengapa DCF Dibutuhkan?
-1. Menilai bisnis berdasarkan kemampuan menghasilkan kas, bukan sekadar harga pasar.
-2. Memungkinkan simulasi skenario optimis, dasar, dan pesimis.
-3. Memberikan dasar negosiasi yang dapat dipertanggungjawabkan.
+export const DEFAULT_RELATIONS: ArticleRelation[] = [];
 
-## Komponen Utama
-- **Proyeksi Arus Kas Bebas**: Estimasi kas operasional setelah belanja modal selama 5-10 tahun.
-- **Tingkat Diskonto (WACC)**: Biaya modal rata-rata tertimbang yang mencerminkan risiko bisnis.
-- **Nilai Terminal**: Nilai bisnis setelah periode proyeksi, dihitung dengan pertumbuhan jangka panjang.`,
-    categoryId: "cat-dcf",
-    tags: ["DCF", "Valuasi", "WACC", "Nilai Terminal"],
-    reviewStatus: "verified",
-    lastReviewedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30).toISOString(), // 30 hari lalu
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 90).toISOString(),
-    updatedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30).toISOString(),
-  },
-  {
-    id: "art-2",
-    title: "Valuasi Gabungan: DCF dengan Pembanding Pasar",
-    summary: "Teknik menggabungkan DCF dan multiple perusahaan sejenis untuk menguji kewajaran hasil valuasi.",
-    content: `# Valuasi Gabungan: DCF dengan Pembanding Pasar
+export const DEFAULT_REVISIONS: ArticleRevision[] = [];
 
-Pada bisnis dengan data historis terbatas, DCF murni sering sensitif terhadap asumsi pertumbuhan.
+export const DEFAULT_CONTRIBUTORS: Contributor[] = [];
 
-## Pendekatan Gabungan
-Bandingkan hasil DCF dengan multiple EV/EBITDA dan P/E dari perusahaan sejenis, lalu beri bobot sesuai keandalan data.
-
-\`\`\`
-Nilai Akhir = (Bobot DCF x Nilai DCF) + (Bobot Pasar x Nilai Multiple)
-\`\`\`
-
-## Rekomendasi Penerapan
-- Gunakan minimal 5 perusahaan pembanding dengan skala sejenis.
-- Lakukan analisis sensitivitas WACC dan pertumbuhan terminal sebelum finalisasi.`,
-    categoryId: "cat-dcf",
-    tags: ["DCF", "Multiple", "Pembanding", "Sensitivitas"],
-    reviewStatus: "reviewed",
-    lastReviewedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 60).toISOString(),
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 60).toISOString(),
-    updatedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 60).toISOString(),
-  },
-  {
-    id: "art-3",
-    title: "Standar Keamanan Enkripsi Data Multi-Tenant",
-    summary: "Panduan arsitektur isolasi kunci enkripsi per-tenant dan kepatuhan standar ISO 27001.",
-    content: `# Standar Keamanan Enkripsi Data Multi-Tenant
-
-Setiap tenant wajib memiliki key envelope encryption yang independen.
-
-- Master Key disimpan pada Hardware Security Module (HSM).
-- Data Encryption Key (DEK) di-rotate setiap 90 hari.
-- Akses audit log tidak boleh dapat di-tamper.`,
-    categoryId: "cat-biz",
-    tags: ["Security", "Encryption", "Multi-Tenant", "ISO27001"],
-    reviewStatus: "outdated",
-    lastReviewedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 220).toISOString(), // > 180 hari (outdated)
-    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 300).toISOString(),
-    updatedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 220).toISOString(),
-  },
-];
-
-const DEFAULT_SOURCES: Source[] = [
-  {
-    id: "src-1",
-    articleId: "art-1",
-    type: "paper",
-    title: "Valuation: Measuring and Managing the Value of Companies",
-    author: "Koller, Goedhart, Wessels (McKinsey)",
-    url: "https://example.org/valuation-handbook",
-    publishedAt: "2020-06-01",
-    reliability: "high",
-    excerpt: "Value is driven by return on invested capital and growth, discounted at the cost of capital.",
-    addedAt: new Date().toISOString(),
-  },
-  {
-    id: "src-2",
-    articleId: "art-2",
-    type: "website",
-    title: "Damodaran Online: Valuation Resources",
-    author: "Aswath Damodaran",
-    url: "https://example.org/damodaran-valuation",
-    reliability: "high",
-    addedAt: new Date().toISOString(),
-  },
-];
-
-const DEFAULT_RELATIONS: ArticleRelation[] = [
-  {
-    id: "rel-1",
-    fromArticleId: "art-2",
-    toArticleId: "art-1",
-    type: "prerequisite",
-    note: "Memahami konsep dasar DCF sangat esensial sebelum menerapkan valuasi gabungan dengan pembanding pasar.",
-  },
-];
-
-const DEFAULT_REVISIONS: ArticleRevision[] = [
-  {
-    id: "rev-1",
-    articleId: "art-1",
-    content: DEFAULT_ARTICLES[0].content,
-    editedBy: "Lead Knowledge Architect",
-    editedAt: DEFAULT_ARTICLES[0].updatedAt,
-    changeSummary: "Inisiasi awal dokumen metodologi valuasi DCF",
-  },
-];
-
-const DEFAULT_CONTRIBUTORS: Contributor[] = [
-  {
-    articleId: "art-1",
-    userId: "user-system",
-    role: "author",
-    contributedAt: DEFAULT_ARTICLES[0].createdAt,
-  },
-];
-
-const INITIAL_DATA: KnowledgeBaseData = {
+export const INITIAL_DATA: KnowledgeBaseData = {
   articles: DEFAULT_ARTICLES,
   categories: DEFAULT_CATEGORIES,
   sources: DEFAULT_SOURCES,
@@ -162,12 +49,22 @@ function loadKBData(): KnowledgeBaseData {
     return {
       ...INITIAL_DATA,
       ...parsed,
-      articles: Array.isArray(parsed.articles) ? parsed.articles : INITIAL_DATA.articles,
+      articles: Array.isArray(parsed.articles)
+        ? filterExactSeedRecords(parsed.articles, LEGACY_KB_SEED_FINGERPRINTS.articles, LEGACY_DYNAMIC_SEED_FIELDS)
+        : INITIAL_DATA.articles,
       categories: Array.isArray(parsed.categories) ? parsed.categories : INITIAL_DATA.categories,
-      sources: Array.isArray(parsed.sources) ? parsed.sources : INITIAL_DATA.sources,
-      relations: Array.isArray(parsed.relations) ? parsed.relations : INITIAL_DATA.relations,
-      revisions: Array.isArray(parsed.revisions) ? parsed.revisions : INITIAL_DATA.revisions,
-      contributors: Array.isArray(parsed.contributors) ? parsed.contributors : INITIAL_DATA.contributors,
+      sources: Array.isArray(parsed.sources)
+        ? filterExactSeedRecords(parsed.sources, LEGACY_KB_SEED_FINGERPRINTS.sources, LEGACY_DYNAMIC_SEED_FIELDS)
+        : INITIAL_DATA.sources,
+      relations: Array.isArray(parsed.relations)
+        ? filterExactSeedRecords(parsed.relations, LEGACY_KB_SEED_FINGERPRINTS.relations)
+        : INITIAL_DATA.relations,
+      revisions: Array.isArray(parsed.revisions)
+        ? filterExactSeedRecords(parsed.revisions, LEGACY_KB_SEED_FINGERPRINTS.revisions, LEGACY_DYNAMIC_SEED_FIELDS)
+        : INITIAL_DATA.revisions,
+      contributors: Array.isArray(parsed.contributors)
+        ? filterExactSeedRecords(parsed.contributors, LEGACY_KB_SEED_FINGERPRINTS.contributors, LEGACY_DYNAMIC_SEED_FIELDS)
+        : INITIAL_DATA.contributors,
     };
   } catch (e) {
     console.error("Failed to load Knowledge Base data:", e);

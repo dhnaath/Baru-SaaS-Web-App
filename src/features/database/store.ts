@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { getRaw, setRaw } from "../../core/rawStorage";
+import { filterExactSeedRecords } from "../../core/legacySeed";
+import { LEGACY_DATABASE_SEED_FINGERPRINTS } from "./legacySeedFingerprints";
 import {
   DatabaseData,
   DatabaseTable,
@@ -94,75 +96,7 @@ const DEFAULT_FIELDS: DatabaseField[] = [
   },
 ];
 
-const DEFAULT_RECORDS: DatabaseRecord[] = [
-  {
-    id: "rec-v-1",
-    tableId: "tbl-vendor",
-    values: {
-      "fld-v-name": "PT Cloud Infrastruktur Indonesia",
-      "fld-v-cat": "opt-cloud",
-      "fld-v-email": "support@cloudindonesia.co.id",
-      "fld-v-status": "opt-act",
-      "fld-v-contract": ["rec-c-1"],
-    },
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-  {
-    id: "rec-v-2",
-    tableId: "tbl-vendor",
-    values: {
-      "fld-v-name": "CV Hardware Solusindo",
-      "fld-v-cat": "opt-hardware",
-      "fld-v-email": "sales@hardwaresolusi.com",
-      "fld-v-status": "opt-act",
-      "fld-v-contract": ["rec-c-2"],
-    },
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-  {
-    id: "rec-v-3",
-    tableId: "tbl-vendor",
-    values: {
-      "fld-v-name": "Advisory Partners Legal",
-      "fld-v-cat": "opt-consulting",
-      "fld-v-email": "contact@advisorylegal.id",
-      "fld-v-status": "opt-rev",
-      "fld-v-contract": [],
-    },
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-
-  // Contracts
-  {
-    id: "rec-c-1",
-    tableId: "tbl-contract",
-    values: {
-      "fld-c-no": "CTR/2026/IT-001",
-      "fld-c-val": 120000000,
-      "fld-c-start": "2026-01-01",
-      "fld-c-end": "2026-12-31",
-      "fld-c-status": "opt-c-act",
-    },
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-  {
-    id: "rec-c-2",
-    tableId: "tbl-contract",
-    values: {
-      "fld-c-no": "CTR/2025/HW-088",
-      "fld-c-val": 45000000,
-      "fld-c-start": "2025-06-01",
-      "fld-c-end": "2026-06-01",
-      "fld-c-status": "opt-c-act",
-    },
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-];
+export const DEFAULT_RECORDS: DatabaseRecord[] = [];
 
 const DEFAULT_VIEWS: DatabaseView[] = [
   {
@@ -215,7 +149,7 @@ const DEFAULT_RELATIONS: DatabaseRelation[] = [
   },
 ];
 
-const INITIAL_DATA: DatabaseData = {
+export const INITIAL_DATA: DatabaseData = {
   tables: DEFAULT_TABLES,
   fields: DEFAULT_FIELDS,
   records: DEFAULT_RECORDS,
@@ -233,7 +167,9 @@ function loadDatabaseData(): DatabaseData {
       ...parsed,
       tables: Array.isArray(parsed.tables) ? parsed.tables : INITIAL_DATA.tables,
       fields: Array.isArray(parsed.fields) ? parsed.fields : INITIAL_DATA.fields,
-      records: Array.isArray(parsed.records) ? parsed.records : INITIAL_DATA.records,
+      records: Array.isArray(parsed.records)
+        ? filterExactSeedRecords(parsed.records, LEGACY_DATABASE_SEED_FINGERPRINTS.records, new Set(["createdAt", "updatedAt"]))
+        : INITIAL_DATA.records,
       views: Array.isArray(parsed.views) ? parsed.views : INITIAL_DATA.views,
       relations: Array.isArray(parsed.relations) ? parsed.relations : INITIAL_DATA.relations,
     };
