@@ -13,9 +13,22 @@ import {
   STANDALONE_APPS,
   StandaloneRecord,
 } from "./standaloneAppsData";
+import { LEGACY_STANDALONE_SEED_FINGERPRINTS } from "./legacySeedFingerprints";
+import { filterExactSeedRecords } from "@/core/legacySeed";
+import { RetroReviewView } from "./RetroReviewView";
 import { useRouterState, useNavigate } from "@tanstack/react-router";
 import { ShellHeader } from "@/app/shell-header";
 import { ExpandPopoverModal } from "@/components/ui/ExpandPopoverModal";
+
+function isUnmodifiedLegacyDemo(appId: string, value: unknown): boolean {
+  if (!value || typeof value !== "object" || !("id" in value)) return false;
+  const record = value as { id?: unknown };
+  if (typeof record.id !== "string") return false;
+  return filterExactSeedRecords(
+    [value as { id: string }],
+    LEGACY_STANDALONE_SEED_FINGERPRINTS[appId],
+  ).length === 0;
+}
 
 function SafeRedirect({ to }: { to: string }) {
   const navigate = useNavigate();
@@ -45,6 +58,10 @@ export function StandaloneAppView({ appId }: StandaloneAppViewProps) {
     return <SafeRedirect to="/lainnya?app=meeting-timeline" />;
   }
 
+  if (appId === "retro") {
+    return <RetroReviewView />;
+  }
+
   const config = STANDALONE_APPS[appId];
 
   // If no config found, render fallback
@@ -66,7 +83,13 @@ export function StandaloneAppView({ appId }: StandaloneAppViewProps) {
     try {
       const saved = localStorage.getItem(storageKey);
       if (saved) {
-        return JSON.parse(saved);
+        const parsed: unknown = JSON.parse(saved);
+        if (!Array.isArray(parsed)) return config.initialRecords;
+        const nextRecords = parsed.filter((record) => !isUnmodifiedLegacyDemo(appId, record));
+        if (nextRecords.length !== parsed.length) {
+          localStorage.setItem(storageKey, JSON.stringify(nextRecords));
+        }
+        return nextRecords as StandaloneRecord[];
       }
     } catch {
       // ignore

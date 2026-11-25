@@ -120,11 +120,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "location", label: "Lokasi / Platform", placeholder: "Ruang Kerja / Google Meet" },
       ],
     },
-    initialRecords: [
-      { id: "dp-1", title: "Deep Work: Penulisan Proposal Klien", subtitle: "08:30 - 10:30", category: "Deep Work", status: "completed", date: "2026-09-22", priority: "high", meta: { duration: "120", location: "Meja Kerja" } },
-      { id: "dp-2", title: "Sinkronisasi Tim & Evaluasi Milestone", subtitle: "11:00 - 12:00", category: "Rapat", status: "active", date: "2026-09-22", priority: "medium", meta: { duration: "60", location: "Zoom Meeting" } },
-      { id: "dp-3", title: "Review Finansial & Kliring Notula", subtitle: "14:00 - 15:30", category: "Operasional", status: "pending", date: "2026-09-22", priority: "low", meta: { duration: "90", location: "Kantor" } },
-    ],
+    initialRecords: [],
   },
   "roadmap": {
     id: "roadmap",
@@ -151,11 +147,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "owner", label: "Penanggung Jawab", placeholder: "Lead Project" },
       ],
     },
-    initialRecords: [
-      { id: "rm-1", title: "Fase 1: Audit Sistem & Blueprint Arsitektur", subtitle: "Fase Inisiasi", category: "Transformasi Digital", status: "completed", date: "2026-08-30", priority: "high", meta: { progress: "100", owner: "Tim Konsultan" } },
-      { id: "rm-2", title: "Fase 2: Implementasi Modul Operasional", subtitle: "Fase Eksekusi", category: "Transformasi Digital", status: "active", date: "2026-10-15", priority: "high", meta: { progress: "65", owner: "Dev Lead" } },
-      { id: "rm-3", title: "Fase 3: Pelatihan Staf & Serah Terima Final", subtitle: "Fase Transisi", category: "Transformasi Digital", status: "pending", date: "2026-11-20", priority: "medium", meta: { progress: "10", owner: "Project Manager" } },
-    ],
+    initialRecords: [],
   },
   "retro": {
     id: "retro",
@@ -182,10 +174,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "actionItem", label: "Tindakan Korektif Kunci", placeholder: "Kurangi rapat tanpa agenda" },
       ],
     },
-    initialRecords: [
-      { id: "rt-1", title: "Evaluasi Sprint Operasional W3 September", subtitle: "Minggu 3 September 2026", category: "Karier", status: "completed", date: "2026-09-18", priority: "medium", meta: { score: "8.5", actionItem: "Batching email di jam 16:00" } },
-      { id: "rt-2", title: "Review Produktivitas & Kebiasaan Q3", subtitle: "Kuartal 3 2026", category: "Personal", status: "active", date: "2026-09-22", priority: "high", meta: { score: "7.8", actionItem: "Perbanyak sesi olahraga pagi" } },
-    ],
+    initialRecords: [],
   },
   "time-clock": {
     id: "time-clock",
@@ -213,11 +202,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "location", label: "Lokasi / Mode", placeholder: "HQ Office / Remote" },
       ],
     },
-    initialRecords: [
-      { id: "tc-1", title: "Andi Pratama", subtitle: "Shift Pagi (08:00 - 17:00)", category: "Project Operations", status: "active", date: "2026-10-02", priority: "high", meta: { clockIn: "07:55", clockOut: "--:--", location: "HQ Jakarta" } },
-      { id: "tc-2", title: "Rina Salsabila", subtitle: "Shift Pagi (08:00 - 17:00)", category: "Consulting", status: "active", date: "2026-10-02", priority: "medium", meta: { clockIn: "08:10", clockOut: "--:--", location: "Remote Surabaya" } },
-      { id: "tc-3", title: "Budi Santoso", subtitle: "Shift Siang (13:00 - 21:00)", category: "IT Infrastructure", status: "completed", date: "2026-10-01", priority: "low", meta: { clockIn: "12:50", clockOut: "21:05", location: "HQ Data Center" } },
-    ],
+    initialRecords: [],
   },
   "ticket-desk": {
     id: "ticket-desk",
@@ -244,11 +229,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "assignee", label: "PIC Penanganan", placeholder: "IT Support Lead" },
       ],
     },
-    initialRecords: [
-      { id: "tk-1", title: "Koneksi VPN Server Staging Terputus", subtitle: "Infrastruktur Dev", category: "Integrasi", status: "active", date: "2026-10-02", priority: "high", meta: { sla: "2", assignee: "DevOps Engineer" } },
-      { id: "tk-2", title: "Akses Lisensi Dashboard Analitik Klien", subtitle: "Client Portal", category: "Akses", status: "pending", date: "2026-10-02", priority: "high", meta: { sla: "6", assignee: "Account Manager" } },
-      { id: "tk-3", title: "Sinkronisasi Webhook Deliverable Sukses", subtitle: "Automation Pipeline", category: "Integrasi", status: "completed", date: "2026-10-01", priority: "low", meta: { sla: "24", assignee: "Backend Lead" } },
-    ],
+    initialRecords: [],
   },
   "handover-notes": {
     id: "handover-notes",
@@ -275,10 +256,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "recipient", label: "Penerima Mandat", placeholder: "Shift Leader Siang" },
       ],
     },
-    initialRecords: [
-      { id: "hn-1", title: "Handover Uji Beban Server Sebelum Launching", subtitle: "Shift Pagi -> Shift Siang", category: "Proyek Alpha", status: "active", date: "2026-10-02", priority: "high", meta: { pendingTasks: "Monitor load 10.000 concurrent user pukul 14:00", recipient: "Dimas Anggara" } },
-      { id: "hn-2", title: "Rekap Sign-off Approval Dokumen Klien", subtitle: "Legal Tim -> Project Lead", category: "Operasional Klien", status: "completed", date: "2026-10-01", priority: "medium", meta: { pendingTasks: "Arsipkan salinan bermaterai ke drive", recipient: "Siti Rahma" } },
-    ],
+    initialRecords: [],
   },
   "incident-log": {
     id: "incident-log",
@@ -306,10 +284,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "pic", label: "Penanggung Jawab Penanganan", placeholder: "Lead Engineer / Ops Manager" },
       ],
     },
-    initialRecords: [
-      { id: "inc-1", title: "Konektivitas Layanan Autentikasi Mengalami Latensi Tinggi", subtitle: "Infrastruktur Gateway", category: "P2-Major", status: "completed", date: "2026-10-01", priority: "high", meta: { rca: "Beban lonjakan traffic melebihi kuota pool koneksi", actionTaken: "Scale out instans backend otomatis diaktifkan", pic: "Andi Pratama" } },
-      { id: "inc-2", title: "Kegagalan Pengiriman Notifikasi Email Transaksional", subtitle: "Layanan Notifikasi", category: "P3-Minor", status: "active", date: "2026-10-02", priority: "medium", meta: { rca: "Limit kuota harian SMTP provider tercapai", actionTaken: "Beralih ke secondary SMTP relay provider", pic: "Budi Santoso" } },
-    ],
+    initialRecords: [],
   },
   "training-track": {
     id: "training-track",
@@ -336,11 +311,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "certificateId", label: "No. Sertifikat / Akreditasi", placeholder: "CERT-2026-X89" },
       ],
     },
-    initialRecords: [
-      { id: "tr-1", title: "Sertifikasi Konsultan Manajemen Strategis", subtitle: "LSP Konsultan Indonesia", category: "Bisnis", status: "completed", date: "2026-09-15", priority: "high", meta: { duration: "60", certificateId: "SKM-2026-0819" } },
-      { id: "tr-2", title: "Full-Stack System Architecture & Cloud Native", subtitle: "Cloud Academy", category: "Teknis", status: "active", date: "2026-11-10", priority: "high", meta: { duration: "80", certificateId: "In-Progress" } },
-      { id: "tr-3", title: "Executive Decision Making Under Uncertainty", subtitle: "Executive Institute", category: "Leadership", status: "pending", date: "2026-12-01", priority: "medium", meta: { duration: "25", certificateId: "Pending Enrollment" } },
-    ],
+    initialRecords: [],
   },
   "quality-check": {
     id: "quality-check",
@@ -367,10 +338,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "passRate", label: "Tingkat Akurasi / Skor Kelulusan", placeholder: "99.8%" },
       ],
     },
-    initialRecords: [
-      { id: "qc-1", title: "Batch Sensor Modul IoT V3 - Uji Ketahanan Suhu", subtitle: "Lini Fabrikasi 02", category: "ISO-9001", status: "completed", date: "2026-10-01", priority: "high", meta: { inspector: "Rina Wijaya", passRate: "99.8%" } },
-      { id: "qc-2", title: "Packaging Steril Farmasi Vaksin Lot 80", subtitle: "Cleanroom Unit B", category: "GMP", status: "active", date: "2026-10-02", priority: "high", meta: { inspector: "Dr. Danang S.", passRate: "In Progress" } },
-    ],
+    initialRecords: [],
   },
   "batch-track": {
     id: "batch-track",
@@ -397,10 +365,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "quantity", label: "Kuantitas Unit Diproduksi", placeholder: "10,000", type: "number" },
       ],
     },
-    initialRecords: [
-      { id: "bt-1", title: "LOT-2026-X492 (Susu UHT 250ml)", subtitle: "Kemasan Karton Aseptik", category: "Pabrik Sentul", status: "completed", date: "2026-09-28", priority: "high", meta: { expiryDate: "2027-09-28", quantity: "25000" } },
-      { id: "bt-2", title: "LOT-2026-X501 (Tablet Suplemen Multivitamin)", subtitle: "Botol Segel 60 Kapsul", category: "Pabrik Cikarang", status: "active", date: "2026-10-02", priority: "medium", meta: { expiryDate: "2028-10-02", quantity: "15000" } },
-    ],
+    initialRecords: [],
   },
   "cold-chain": {
     id: "cold-chain",
@@ -427,10 +392,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "driverPic", label: "Nama Driver / PIC Logistik", placeholder: "Suparman (Truk B-9182-KX)" },
       ],
     },
-    initialRecords: [
-      { id: "cc-1", title: "TRUCK-COLD-08 (Jakarta -> Surabaya)", subtitle: "Distribusi Vaksin & Reagen Lab", category: "Chilled 2-8°C", status: "active", date: "2026-10-03", priority: "high", meta: { currentTemp: "3.8°C", driverPic: "Bambang Haryanto" } },
-      { id: "cc-2", title: "CONTAINER-REEFER-02 (Semarang -> Bali)", subtitle: "Daging Beku & Seafood Ekspor", category: "Frozen -20°C", status: "completed", date: "2026-10-01", priority: "medium", meta: { currentTemp: "-19.2°C", driverPic: "Agus Santoso" } },
-    ],
+    initialRecords: [],
   },
   "med-reminder": {
     id: "med-reminder",
@@ -457,10 +419,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "doctor", label: "Dokter Peresep / Faskes", placeholder: "dr. Hendra, Sp.PD" },
       ],
     },
-    initialRecords: [
-      { id: "med-1", title: "Omega-3 & Vitamin D3 5000 IU", subtitle: "1 Kapsul setelah sarapan", category: "Vitamin Harian", status: "active", date: "2026-12-31", priority: "medium", meta: { frequency: "08:00 WIB", doctor: "Konsultasi Preventif" } },
-      { id: "med-2", title: "Antibiotik Amoxicillin 500mg", subtitle: "1 Tablet tiap 8 jam (Habiskan)", category: "Resep Dokter", status: "active", date: "2026-10-07", priority: "high", meta: { frequency: "06:00, 14:00, 22:00 WIB", doctor: "dr. Maya Sp.THT" } },
-    ],
+    initialRecords: [],
   },
   "vehicle-identity": {
     id: "vehicle-identity",
@@ -487,10 +446,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "engineNo", label: "Nomor Mesin", placeholder: "M20A-FXS-98124" },
       ],
     },
-    initialRecords: [
-      { id: "vr-1", title: "Toyota Kijang Innova Zenix 2.0 Hybrid", subtitle: "Plat: B 1829 XYZ", category: "Pribadi", status: "active", date: "2024-02-14", priority: "high", meta: { chassisNo: "MHK182901293810", engineNo: "M20A-FXS-98124" } },
-      { id: "vr-2", title: "Honda Vario 160 CBS Putih Mutiara", subtitle: "Plat: B 4920 ABC", category: "Keluarga", status: "active", date: "2023-08-10", priority: "medium", meta: { chassisNo: "MH1KF192001923", engineNo: "KF19E-109283" } },
-    ],
+    initialRecords: [],
   },
   "mileage-fuel": {
     id: "mileage-fuel",
@@ -517,10 +473,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "totalCost", label: "Total Biaya (Rp)", placeholder: "Rp 585.000" },
       ],
     },
-    initialRecords: [
-      { id: "fl-1", title: "Innova Zenix - SPBU Pertamina Kuningan", subtitle: "42 Liter Pertamax (RON 92)", category: "Rutin Kantor", status: "active", date: "2026-10-01", priority: "medium", meta: { odometer: "18.420 km", totalCost: "Rp 546.000" } },
-      { id: "fl-2", title: "Honda Vario - SPBU Shell Gatot Subroto", subtitle: "4.5 Liter Shell Super", category: "Keluarga", status: "completed", date: "2026-09-28", priority: "low", meta: { odometer: "9.310 km", totalCost: "Rp 63.000" } },
-    ],
+    initialRecords: [],
   },
   "parts-lifecycle": {
     id: "parts-lifecycle",
@@ -547,10 +500,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "condition", label: "Kondisi Terakhir (%)", placeholder: "75% Ketebalan Aus" },
       ],
     },
-    initialRecords: [
-      { id: "pl-1", title: "Set 4 Ban Depan & Belakang Bridgestone", subtitle: "Turanza ER33 215/60 R17", category: "Innova Zenix", status: "active", date: "2024-02-14", priority: "medium", meta: { lifespanLimit: "50.000 km", condition: "80% (Baik)" } },
-      { id: "pl-2", title: "Aki Kering Bebas Perawatan GS Astra", subtitle: "MF 55D23L (12V 60Ah)", category: "Innova Zenix", status: "active", date: "2024-02-14", priority: "high", meta: { lifespanLimit: "24 Bulan", condition: "12.6V (Normal)" } },
-    ],
+    initialRecords: [],
   },
   "vehicle-renewals": {
     id: "vehicle-renewals",
@@ -577,10 +527,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "samsatLocation", label: "Lokasi Samsat / Layanan Gerai", placeholder: "Samsat Jakarta Selatan" },
       ],
     },
-    initialRecords: [
-      { id: "vrn-1", title: "Pajak Tahunan STNK Innova Zenix", subtitle: "Plat B 1829 XYZ - Samsat Jaksel", category: "Pajak Tahunan", status: "active", date: "2027-02-14", priority: "high", meta: { estimatedTax: "Rp 4.850.000", samsatLocation: "Samsat Digital SIGNAL" } },
-      { id: "vrn-2", title: "Uji Emisi Gas Buang Resmi", subtitle: "Bengkel Resmi Auto2000 Cilandak", category: "Uji Emisi", status: "completed", date: "2026-08-20", priority: "medium", meta: { estimatedTax: "Rp 150.000", samsatLocation: "Terdaftar di ujiemisi.jakarta.go.id" } },
-    ],
+    initialRecords: [],
   },
   "disaster-prep": {
     id: "disaster-prep",
@@ -607,10 +554,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "expirySupply", label: "Kedaluwarsa Ransum / Baterai", placeholder: "Maret 2027" },
       ],
     },
-    initialRecords: [
-      { id: "dp-1", title: "Tas Siaga Bencana Utama (Go-Bag 72 Jam)", subtitle: "Dekat Pintu Utama / Garasi", category: "Tas Siaga Bencana", status: "active", date: "2026-12-01", priority: "high", meta: { assignedMember: "Semua Anggota", expirySupply: "Ransum & P3K dicek 6 bln sekali" } },
-      { id: "dp-2", title: "Titik Kumpul Evakuasi Gempa & Kebakaran", subtitle: "Lapangan Terbuka RT 04 (150m dari rumah)", category: "Rute Evakuasi", status: "completed", date: "2026-08-15", priority: "high", meta: { assignedMember: "Keluarga Besar", expirySupply: "Bebas tiang listrik & bangunan tinggi" } },
-    ],
+    initialRecords: [],
   },
   "meeting-timeline": {
     id: "meeting-timeline",
@@ -637,10 +581,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "decision", label: "Hasil Keputusan / Action Items", placeholder: "Disepakati renovasi dapur mulai Nov" },
       ],
     },
-    initialRecords: [
-      { id: "mt-1", title: "Musyawarah Rencana Liburan Akhir Tahun 2026", subtitle: "Ruang Keluarga - Jam 19:30 WIB", category: "Perencanaan Liburan", status: "active", date: "2026-10-15", priority: "medium", meta: { moderator: "Ayah & Ibu", decision: "Menentukan destinasi Yogyakarta / Malang" } },
-      { id: "mt-2", title: "Review Anggaran Bulanan & Tabungan Pendidikan", subtitle: "Pertemuan Meja Makan Akhir Bulan", category: "Anggaran Rumah Tangga", status: "completed", date: "2026-09-30", priority: "high", meta: { moderator: "Ibu", decision: "Alokasi tabungan investasi dinaikkan 5%" } },
-    ],
+    initialRecords: [],
   },
   "carpool-plan": {
     id: "carpool-plan",
@@ -667,10 +608,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "vehicleAssigned", label: "Kendaraan Yang Digunakan", placeholder: "Innova Zenix (B 1829 XYZ)" },
       ],
     },
-    initialRecords: [
-      { id: "cp-1", title: "Antar-Jemput Sekolah SD Labschool", subtitle: "Kevin, Alisa, dan Dimas (3 Anak)", category: "Senin - Kamis (06:30 & 14:00)", status: "active", date: "2026-10-06", priority: "high", meta: { driverName: "Ayah (Senin-Selasa), Ibu Sarah (Rabu-Kamis)", vehicleAssigned: "Innova Zenix" } },
-      { id: "cp-2", title: "Antar Les Robotika & Kursus Bahasa Inggris", subtitle: "Kevin & Alisa - Gedung EduCenter", category: "Jumat Sore (15:30 WIB)", status: "active", date: "2026-10-09", priority: "medium", meta: { driverName: "Ibu", vehicleAssigned: "Honda Vario / Innova" } },
-    ],
+    initialRecords: [],
   },
   "client-orders": {
     id: "client-orders",
@@ -697,10 +635,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "picClient", label: "PIC Klien & Jabatan", placeholder: "Bpk. Hendra (Direktur Keuangan)" },
       ],
     },
-    initialRecords: [
-      { id: "co-1", title: "Advisory Restrukturisasi Modal - PT Sinar Mega", subtitle: "PO-2026-OCT-001", category: "Advisory", status: "active", date: "2026-11-15", priority: "high", meta: { contractValue: "Rp 250.000.000", picClient: "Bpk. Hendra" } },
-      { id: "co-2", title: "Audit Kepatuhan ISO & Valuasi Aset - PT Cahaya", subtitle: "PO-2026-SEP-089", category: "Valuasi", status: "completed", date: "2026-09-30", priority: "medium", meta: { contractValue: "Rp 120.000.000", picClient: "Ibu Maya" } },
-    ],
+    initialRecords: [],
   },
   "custom-reports": {
     id: "custom-reports",
@@ -727,10 +662,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "leadAnalyst", label: "Lead Consultant / Analis", placeholder: "Dr. Danang Supratman" },
       ],
     },
-    initialRecords: [
-      { id: "cr-1", title: "Executive Diagnostic Report Q3 - Finansial", subtitle: "Format: PDF Interactive 45 Halaman", category: "PT Sinar Mega", status: "completed", date: "2026-10-01", priority: "high", meta: { version: "v2.0 Final", leadAnalyst: "Dr. Danang" } },
-      { id: "cr-2", title: "Kajian Kelayakan Investasi Proyek Smelter", subtitle: "Format: Spreadsheet & Slide Eksekutif", category: "PT Bumi Mineral", status: "active", date: "2026-10-20", priority: "high", meta: { version: "v1.2 Draft", leadAnalyst: "Rina Wijaya, ST" } },
-    ],
+    initialRecords: [],
   },
   "queue-line": {
     id: "queue-line",
@@ -757,10 +689,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "officer", label: "Petugas Konsultan", placeholder: "Counter 02 (Bambang H.)" },
       ],
     },
-    initialRecords: [
-      { id: "ql-1", title: "Antrean #A-14: Bpk. Gunawan Wibisono", subtitle: "Loket 01 - Konsultasi Valuasi Saham", category: "Konsultasi", status: "active", date: "2026-10-02", priority: "high", meta: { waitTime: "5 Menit", officer: "Counter 01 (Fajar S.)" } },
-      { id: "ql-2", title: "Antrean #B-08: Ibu Ratna Kartika", subtitle: "Loket 03 - Penyerahan Dokumen Kontrak", category: "Legal", status: "completed", date: "2026-10-02", priority: "medium", meta: { waitTime: "Selesai (15 Menit)", officer: "Counter 03 (Siti A.)" } },
-    ],
+    initialRecords: [],
   },
   "book-slot": {
     id: "book-slot",
@@ -787,10 +716,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "meetingRoom", label: "Ruang Rapat / Google Meet Link", placeholder: "Boardroom Lt. 18 / meet.google.com/xyz" },
       ],
     },
-    initialRecords: [
-      { id: "bs-1", title: "Advisory 1-on-1 Finansial: PT Sinar Mega", subtitle: "14:00 - 15:30 WIB (Boardroom Utama SCBD)", category: "Strategis", status: "active", date: "2026-10-05", priority: "high", meta: { duration: "90 Menit", meetingRoom: "Boardroom Lantai 18" } },
-      { id: "bs-2", title: "Kickoff Meeting Proyek: CV Kreasi Mandiri", subtitle: "10:00 - 11:00 WIB (Google Meet)", category: "Onboarding", status: "active", date: "2026-10-07", priority: "medium", meta: { duration: "60 Menit", meetingRoom: "meet.google.com/cre-mandiri" } },
-    ],
+    initialRecords: [],
   },
   "visitor-log": {
     id: "visitor-log",
@@ -817,10 +743,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "contactPhone", label: "Nomor Telepon Pengunjung", placeholder: "0812-9988-7766" },
       ],
     },
-    initialRecords: [
-      { id: "vl-1", title: "Bpk. Rahmat Santoso (KAP Santoso & Rekan)", subtitle: "Audit Tahunan - Menemui Bpk. Hendra", category: "Auditor", status: "active", date: "2026-10-02", priority: "high", meta: { visitorBadge: "BADGE-VIS-04", contactPhone: "0811-2345-678" } },
-      { id: "vl-2", title: "Ibu Dini Anindita (PT Telkom Data)", subtitle: "Maintenance Server Cloud - Ruang Server", category: "Vendor", status: "completed", date: "2026-10-01", priority: "medium", meta: { visitorBadge: "BADGE-VIS-12", contactPhone: "0813-8899-001" } },
-    ],
+    initialRecords: [],
   },
   "feedback-loop": {
     id: "feedback-loop",
@@ -847,10 +770,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "followUpAction", label: "Tindak Lanjut Internal", placeholder: "Kirim surat apresiasi & tindaklanjuti saran" },
       ],
     },
-    initialRecords: [
-      { id: "fl-1", title: "PT Sinar Mega: Advisory Sangat Presisi & Komprehensif", subtitle: "NPS: 10/10 (Sangat Merekomendasikan)", category: "Advisory Finansial", status: "completed", date: "2026-10-01", priority: "low", meta: { ratingScore: "5/5 Bintang", followUpAction: "Kirim ucapan terima kasih dari Managing Partner" } },
-      { id: "fl-2", title: "CV Artha: Mohon Percepat Distribusi File Rangkuman Rapat", subtitle: "NPS: 8/10 (Puas, Usulan Perbaikan Waktu Notula)", category: "Kolaborasi Proyek", status: "active", date: "2026-09-29", priority: "high", meta: { ratingScore: "4/5 Bintang", followUpAction: "Standardisasi pengiriman notula max 24 jam kerja" } },
-    ],
+    initialRecords: [],
   },
   "loyalty-point": {
     id: "loyalty-point",
@@ -877,10 +797,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "activeBenefit", label: "Benefit Yang Dapat Diklaim", placeholder: "Diskon 10% Sesi Workshop & Priority Support" },
       ],
     },
-    initialRecords: [
-      { id: "lp-1", title: "PT Sinar Mega Tbk (Akun Prioritas)", subtitle: "Tier Platinum (Membership VIP)", category: "Platinum", status: "active", date: "2027-12-31", priority: "high", meta: { totalPoints: "24.500 Poin", activeBenefit: "Akses Priority Advisory 24/7 & Complimentary Workshop" } },
-      { id: "lp-2", title: "CV Kreasi Mandiri Nusantara", subtitle: "Tier Gold (Loyal Partner)", category: "Gold", status: "active", date: "2027-06-30", priority: "medium", meta: { totalPoints: "8.200 Poin", activeBenefit: "Diskon 5% Retainer Kontrak Bulanan" } },
-    ],
+    initialRecords: [],
   },
   "canvas": {
     id: "canvas",
@@ -907,10 +824,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "collaborators", label: "Kontributor", placeholder: "Pribadi / Tim" },
       ],
     },
-    initialRecords: [
-      { id: "cv-1", title: "Arsitektur Layanan Jasa Konsultasi 2027", subtitle: "Mind Map Konseptual", category: "Strategi Bisnis", status: "active", date: "2026-09-20", priority: "high", meta: { elements: "18", collaborators: "Lead Konsultan" } },
-      { id: "cv-2", title: "Alur Onboarding Klien Korporat", subtitle: "User Flow Diagram", category: "Operasional", status: "completed", date: "2026-09-15", priority: "medium", meta: { elements: "12", collaborators: "Tim Operasional" } },
-    ],
+    initialRecords: [],
   },
   "wiki": {
     id: "wiki",
@@ -937,10 +851,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "source", label: "Sumber Literatur", placeholder: "Harvard Business Review / Dokumen Internal" },
       ],
     },
-    initialRecords: [
-      { id: "wk-1", title: "Kerangka Standar Analisis Risiko Rantai Pasok", subtitle: "Metodologi mitigasi disrupsi logistik", category: "Supply Chain", status: "completed", date: "2026-09-12", priority: "high", meta: { tags: "logistik, risiko, iso", source: "Pedoman ISO 31000" } },
-      { id: "wk-2", title: "Panduan Struktur Biaya Jasa Profesional", subtitle: "Komponen penetapan fee konsultansi per jam", category: "Bisnis", status: "completed", date: "2026-09-16", priority: "medium", meta: { tags: "biaya, tarif, konsultan", source: "Kompilasi Internal" } },
-    ],
+    initialRecords: [],
   },
   "workload": {
     id: "workload",
@@ -967,11 +878,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "maxCapacity", label: "Kapasitas Maksimum", placeholder: "40 Jam", type: "text" },
       ],
     },
-    initialRecords: [
-      { id: "wl-1", title: "Dukungan Klien PT Sinar Utama", subtitle: "Lead Advisor", category: "Klien Strategis", status: "active", date: "2026-09-22", priority: "high", meta: { allocatedHours: "16", maxCapacity: "40 Jam" } },
-      { id: "wl-2", title: "Penyusunan Modul Pelatihan Internal", subtitle: "Kurator Konten", category: "Internal", status: "active", date: "2026-09-22", priority: "medium", meta: { allocatedHours: "10", maxCapacity: "40 Jam" } },
-      { id: "wl-3", title: "Pembaruan Tata Kelola & Dokumen Legal", subtitle: "Compliance Officer", category: "Governance", status: "pending", date: "2026-09-25", priority: "low", meta: { allocatedHours: "6", maxCapacity: "40 Jam" } },
-    ],
+    initialRecords: [],
   },
   "sop": {
     id: "sop",
@@ -998,10 +905,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "reviewer", label: "Peninjau Terakhir", placeholder: "Head of Operations" },
       ],
     },
-    initialRecords: [
-      { id: "sop-1", title: "SOP Penerimaan dan Kick-off Proyek Baru", subtitle: "SOP-CLI-001", category: "Hubungan Klien", status: "active", date: "2026-06-01", priority: "high", meta: { stepsCount: "6", reviewer: "Managing Director" } },
-      { id: "sop-2", title: "SOP Penanganan Insiden Keamanan & Kredensial", subtitle: "SOP-SEC-003", category: "Keamanan Sistem", status: "active", date: "2026-07-15", priority: "high", meta: { stepsCount: "9", reviewer: "Security Lead" } },
-    ],
+    initialRecords: [],
   },
   "templates": {
     id: "templates",
@@ -1058,10 +962,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "picContact", label: "Kontak PIC / Sales", placeholder: "0812-xxxx-xxxx (Bpk. Anton)" },
       ],
     },
-    initialRecords: [
-      { id: "vnd-1", title: "CloudNet Hosting & Data Center", subtitle: "Infrastruktur Server & Backup", category: "Teknologi", status: "active", date: "2027-02-15", priority: "high", meta: { rating: "4.9", picContact: "sales@cloudnet.co.id" } },
-      { id: "vnd-2", title: "Percetakan Prima Grafika", subtitle: "Cetak Laporan Tahunan & Dokumen", category: "Percetakan", status: "active", date: "2026-12-31", priority: "medium", meta: { rating: "4.5", picContact: "0811-2233-4455 (Ibu Maya)" } },
-    ],
+    initialRecords: [],
   },
   "services-ratecard": {
     id: "services-ratecard",
@@ -1088,10 +989,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "deliverable", label: "Deliverable Utama", placeholder: "Laporan Analisis + 3x Sesi Konsultasi" },
       ],
     },
-    initialRecords: [
-      { id: "rc-1", title: "Paket Strategic Advisory Retainer", subtitle: "Bulanan (Retainer)", category: "Advisory", status: "active", date: "2026-01-01", priority: "high", meta: { rate: "Rp 25.000.000 / bln", deliverable: "4x Sesi Rapat Dewan + On-Demand Chat" } },
-      { id: "rc-2", title: "Audit Proses Bisnis & Pemetaan SOP", subtitle: "Per Proyek", category: "Operations", status: "active", date: "2026-01-01", priority: "medium", meta: { rate: "Rp 45.000.000 / proyek", deliverable: "Buku Panduan SOP Komprehensif" } },
-    ],
+    initialRecords: [],
   },
   "mailroom": {
     id: "mailroom",
@@ -1118,10 +1016,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "trackingNumber", label: "Resi / Bukti Kirim", placeholder: "JNE-88291039" },
       ],
     },
-    initialRecords: [
-      { id: "ml-1", title: "023/EXT/SU/IX/2026: Undangan Rapat Evaluasi Triwulan", subtitle: "Dari: PT Sinar Abadi Sentosa", category: "Surat Masuk", status: "active", date: "2026-09-19", priority: "high", meta: { disposisi: "Harap dihadiri Lead Consultant", trackingNumber: "Kurir Langsung" } },
-      { id: "ml-2", title: "045/OUT/KONS/IX/2026: Pengiriman Berita Acara Serah Terima", subtitle: "Kepada: Dinas Perindustrian", category: "Surat Keluar", status: "completed", date: "2026-09-20", priority: "medium", meta: { disposisi: "Selesai ditandatangani", trackingNumber: "POS-99210029" } },
-    ],
+    initialRecords: [],
   },
   "minutes": {
     id: "minutes",
@@ -1148,10 +1043,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "attendees", label: "Jumlah Peserta Hadir", placeholder: "7 Orang", type: "text" },
       ],
     },
-    initialRecords: [
-      { id: "min-1", title: "MoM-2026-09-18: Rapat Koordinasi Kuartal IV", subtitle: "Chair: Direktur Utama | Note: Sekretaris", category: "Manajemen", status: "completed", date: "2026-09-18", priority: "high", meta: { actionItems: "Finalisasi target pendapatan 2027", attendees: "6 Direksi" } },
-      { id: "min-2", title: "MoM-2026-09-21: Kick-Off Proyek Efisiensi Rantai Pasok", subtitle: "Chair: Project Manager", category: "Operasional Klien", status: "active", date: "2026-09-21", priority: "high", meta: { actionItems: "Pemberian akses data gudang kepada tim", attendees: "9 Orang" } },
-    ],
+    initialRecords: [],
   },
   "digital-assets": {
     id: "digital-assets",
@@ -1178,10 +1070,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "dnsIp", label: "DNS / IP / Akun Login", placeholder: "ns1.cloudflare.com / admin@domain.com" },
       ],
     },
-    initialRecords: [
-      { id: "da-1", title: "client-os-enterprise.id (Domain Utama)", subtitle: "Registrar: PANDI / Cloudflare DNS", category: "Domain Web", status: "active", date: "2027-08-20", priority: "high", meta: { annualCost: "Rp 350.000 / th", dnsIp: "104.21.82.11 (Cloudflare Pro)" } },
-      { id: "da-2", title: "Dedicated Cloud Server (Singapore Node)", subtitle: "Provider: DigitalOcean Enterprise", category: "Hosting / Server", status: "active", date: "2026-12-15", priority: "high", meta: { annualCost: "$240 / th", dnsIp: "128.199.200.41 (SSH Key Auth)" } },
-    ],
+    initialRecords: [],
   },
   "access-matrix": {
     id: "access-matrix",
@@ -1208,10 +1097,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "mfaStatus", label: "Status Autentikasi 2FA", placeholder: "Wajib Aktif (Hardware Token)" },
       ],
     },
-    initialRecords: [
-      { id: "ac-1", title: "Portal Cloud Server AWS & Database", subtitle: "Super Administrator", category: "Infrastruktur", status: "active", date: "2026-09-01", priority: "high", meta: { holder: "CTO / Lead DevOps", mfaStatus: "FIDO2 Key" } },
-      { id: "ac-2", title: "Kunci Ruang Server & Brankas Dokumen Kantor", subtitle: "Kunci Fisik Utama", category: "Fisik", status: "active", date: "2026-09-10", priority: "high", meta: { holder: "Office Manager", mfaStatus: "Kunci Ganda & Kode Pin" } },
-    ],
+    initialRecords: [],
   },
 
   // 2. Personal, Essentials, and Household
@@ -1240,11 +1126,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "costEst", label: "Estimasi Kebutuhan Biaya", placeholder: "Rp 35.000.000" },
       ],
     },
-    initialRecords: [
-      { id: "bl-1", title: "Mendaki Gunung Rinjani bersama Keluarga", subtitle: "Petualangan", category: "Alam", status: "active", date: "2027-07-01", priority: "medium", meta: { location: "Lombok, NTB", costEst: "Rp 12.000.000" } },
-      { id: "bl-2", title: "Menyelesaikan Penulisan Buku Manajemen Praktis", subtitle: "Karya Pribadi", category: "Literasi", status: "active", date: "2026-12-31", priority: "high", meta: { location: "Penerbit Nasional", costEst: "Biaya Waktu" } },
-      { id: "bl-3", title: "Sertifikasi Menyelam Open Water PADI", subtitle: "Keterampilan", category: "Olahraga", status: "completed", date: "2025-08-15", priority: "low", meta: { location: "Bali", costEst: "Tercapai" } },
-    ],
+    initialRecords: [],
   },
   "mood-tracker": {
     id: "mood-tracker",
@@ -1271,10 +1153,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "trigger", label: "Pemicu Utama", placeholder: "Selesai presentasi dengan lancar" },
       ],
     },
-    initialRecords: [
-      { id: "md-1", title: "Keluarga sehat dan sarapan bersama tanpa terburu-buru", subtitle: "Sangat Tenang & Bersyukur", category: "Keluarga", status: "completed", date: "2026-09-21", priority: "medium", meta: { moodScore: "9", trigger: "Waktu pagi berkualitas" } },
-      { id: "md-2", title: "Apresiasi hangat dari klien atas hasil analisis", subtitle: "Puas & Bangga", category: "Pekerjaan", status: "completed", date: "2026-09-22", priority: "high", meta: { moodScore: "8.5", trigger: "Feedback positif" } },
-    ],
+    initialRecords: [],
   },
   "civil-docs": {
     id: "civil-docs",
@@ -1301,11 +1180,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "physicalLocation", label: "Lokasi Simpan Fisik", placeholder: "Map Biru Lemari Dokumen Lt 2" },
       ],
     },
-    initialRecords: [
-      { id: "cd-1", title: "Paspor Republik Indonesia (E-Passport)", subtitle: "No: X8921029", category: "Pribadi", status: "active", date: "2031-04-10", priority: "high", meta: { issuer: "Kantor Imigrasi Jaksel", physicalLocation: "Brankas Utama Kamar" } },
-      { id: "cd-2", title: "Surat Izin Mengemudi (SIM A)", subtitle: "No: 9201-1920-0012", category: "Pribadi", status: "urgent", date: "2026-11-05", priority: "high", meta: { issuer: "Satpas Polda Metro Jaya", physicalLocation: "Dompet Pribadi" } },
-      { id: "cd-3", title: "Ijazah Magister Manajemen Bisnis", subtitle: "No: MM-2021-00921", category: "Pribadi", status: "completed", date: "Seumur Hidup", priority: "medium", meta: { issuer: "Universitas Indonesia", physicalLocation: "Folder Arsip Ijazah" } },
-    ],
+    initialRecords: [],
   },
   "wishlist": {
     id: "wishlist",
@@ -1332,10 +1207,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "storeLink", label: "Tautan Toko / Referensi", placeholder: "tokopedia.com/..." },
       ],
     },
-    initialRecords: [
-      { id: "wl-item-1", title: "Monitor Ergonomis 27 Inch 4K", subtitle: "Peralatan Kerja", category: "Produktivitas", status: "active", date: "2026-11-10", priority: "high", meta: { targetPrice: "Rp 5.200.000", storeLink: "Official Store" } },
-      { id: "wl-item-2", title: "Air Purifier HEPA untuk Kamar Tidur", subtitle: "Peralatan Rumah", category: "Kesehatan", status: "active", date: "2026-10-01", priority: "medium", meta: { targetPrice: "Rp 2.100.000", storeLink: "Toko Elektronik" } },
-    ],
+    initialRecords: [],
   },
   "warranty": {
     id: "warranty",
@@ -1362,10 +1234,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "serviceCenter", label: "Kontak Service Center", placeholder: "021-500800 (Pusat Servis Resmi)" },
       ],
     },
-    initialRecords: [
-      { id: "wr-1", title: "Mesin Cuci Front Loading Inverter", subtitle: "SN: WM-LG-2024-9912", category: "Elektronik Rumah", status: "active", date: "2029-03-20", priority: "high", meta: { purchaseDate: "2024-03-20 (Garansi 5 Th Motor)", serviceCenter: "14010 (Call Center Resmi)" } },
-      { id: "wr-2", title: "Laptop Kerja Ultrabook Core Ultra", subtitle: "SN: LP-DELL-88210", category: "Komputer", status: "active", date: "2027-01-15", priority: "high", meta: { purchaseDate: "2025-01-15 (Onsite 2 Tahun)", serviceCenter: "Dell Care Indonesia" } },
-    ],
+    initialRecords: [],
   },
   "medical-records": {
     id: "medical-records",
@@ -1392,10 +1261,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "allergyNotes", label: "Catatan Alergi Obat", placeholder: "Alergi Amoxicillin" },
       ],
     },
-    initialRecords: [
-      { id: "mr-1", title: "Medical Check-Up Tahunan 2026", subtitle: "RS Pondok Indah | Dr. Hartono, Sp.PD", category: "Pribadi", status: "completed", date: "2026-08-14", priority: "medium", meta: { keyFinding: "Tensi: 120/80, Gula Darah Puasa: 92 (Sehat)", allergyNotes: "Tidak ada alergi baru" } },
-      { id: "mr-2", title: "Vaksinasi Influenza & Pneumokokus", subtitle: "Klinik Pratama Sehat", category: "Pribadi", status: "completed", date: "2026-05-10", priority: "low", meta: { keyFinding: "Vaksin Booster Tahunan", allergyNotes: "Aman" } },
-    ],
+    initialRecords: [],
   },
   "meal-planner": {
     id: "meal-planner",
@@ -1422,10 +1288,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "prepTime", label: "Waktu Menyiapkan", placeholder: "25 Menit" },
       ],
     },
-    initialRecords: [
-      { id: "mp-1", title: "Makan Siang: Dada Ayam Panggang Rosemary + Quinoa & Brokoli", subtitle: "Tinggi Protein, Rendah Lemak", category: "Senin - Makan Siang", status: "active", date: "2026-09-22", priority: "medium", meta: { caloriesEst: "520 kkal", prepTime: "20 Menit" } },
-      { id: "mp-2", title: "Makan Malam: Sup Ikan Kakap Bening & Jamur Enoki", subtitle: "Ringan & Mudah Dicerna", category: "Senin - Makan Malam", status: "pending", date: "2026-09-22", priority: "low", meta: { caloriesEst: "380 kkal", prepTime: "30 Menit" } },
-    ],
+    initialRecords: [],
   },
   "body-tracker": {
     id: "body-tracker",
@@ -1452,10 +1315,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "waistline", label: "Lingkar Pinggang (cm)", placeholder: "82 cm", type: "text" },
       ],
     },
-    initialRecords: [
-      { id: "bt-1", title: "71.4 kg", subtitle: "Timbang pagi setelah bangun tidur", category: "Fase Maintenance", status: "completed", date: "2026-09-22", priority: "medium", meta: { bodyFat: "18.2%", waistline: "81.5 cm" } },
-      { id: "bt-2", title: "71.8 kg", subtitle: "Timbang pagi", category: "Fase Maintenance", status: "completed", date: "2026-09-15", priority: "medium", meta: { bodyFat: "18.4%", waistline: "82.0 cm" } },
-    ],
+    initialRecords: [],
   },
   "sleep-tracker": {
     id: "sleep-tracker",
@@ -1482,10 +1342,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "disturbances", label: "Gangguan Tidur", placeholder: "Terbangun 1x minum air" },
       ],
     },
-    initialRecords: [
-      { id: "sl-1", title: "7 Jam 35 Menit", subtitle: "23:00 - 06:35", category: "Segar & Optimal", status: "completed", date: "2026-09-22", priority: "medium", meta: { sleepScore: "89", disturbances: "Nol gangguan" } },
-      { id: "sl-2", title: "6 Jam 45 Menit", subtitle: "23:45 - 06:30", category: "Cukup", status: "completed", date: "2026-09-21", priority: "low", meta: { sleepScore: "78", disturbances: "Membaca ponsel larut malam" } },
-    ],
+    initialRecords: [],
   },
   "skincare-routine": {
     id: "skincare-routine",
@@ -1512,10 +1369,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "openedDate", label: "Tanggal Dibuka", placeholder: "2026-07-01 (PAO 12 Bulan)" },
       ],
     },
-    initialRecords: [
-      { id: "sc-1", title: "Sunscreen Gel Broad Spectrum SPF 50+ PA++++", subtitle: "Langkah 4 Pagi: Perlindungan UV", category: "Rutinitas Pagi", status: "active", date: "2027-05-30", priority: "high", meta: { activeIngredients: "Hyaluronic Acid & Zinc Oxide", openedDate: "Dibuka: Juli 2026" } },
-      { id: "sc-2", title: "Gentle Foaming Cleanser pH 5.5", subtitle: "Langkah 1: Pembersih Wajah Lembut", category: "Pagi & Malam", status: "active", date: "2027-08-15", priority: "medium", meta: { activeIngredients: "Ceramides & Chamomile", openedDate: "Dibuka: Juni 2026" } },
-    ],
+    initialRecords: [],
   },
   "pantry": {
     id: "pantry",
@@ -1542,10 +1396,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "supplierStore", label: "Toko Langganan", placeholder: "Supermarket / Pasar Segar" },
       ],
     },
-    initialRecords: [
-      { id: "pnt-1", title: "Minyak Zaitun Extra Virgin 1 Liter", subtitle: "Sisa 1 Botol Penuh", category: "Rak Kering", status: "active", date: "2026-08-20", priority: "medium", meta: { minLimit: "1 Botol", supplierStore: "Supermarket Premium" } },
-      { id: "pnt-2", title: "Dada Ayam Fillet Segar Beku", subtitle: "4 Pack (masing-masing 500g)", category: "Freezer", status: "active", date: "2026-09-18", priority: "high", meta: { minLimit: "2 Pack", supplierStore: "Pasar Segar Organik" } },
-    ],
+    initialRecords: [],
   },
   "food-expiry": {
     id: "food-expiry",
@@ -1572,10 +1423,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "actionPlan", label: "Rencana Pemanfaatan", placeholder: "Olah jadi sup malam ini" },
       ],
     },
-    initialRecords: [
-      { id: "fe-1", title: "Susu Segar Pasteurisasi 1 Liter", subtitle: "Sudah dibuka 2 hari lalu", category: "Kulkas Utama", status: "urgent", date: "2026-09-24", priority: "high", meta: { daysLeft: "2 Hari", actionPlan: "Buat sarapan oatmeal besok pagi" } },
-      { id: "fe-2", title: "Keju Parmesan Blok Asli", subtitle: "Kemasan kedap udara", category: "Chiller", status: "active", date: "2026-11-15", priority: "low", meta: { daysLeft: "54 Hari", actionPlan: "Taburan pasta keluarga" } },
-    ],
+    initialRecords: [],
   },
   "chores": {
     id: "chores",
@@ -1602,10 +1450,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "durationEst", label: "Estimasi Waktu Kerja", placeholder: "30 Menit" },
       ],
     },
-    initialRecords: [
-      { id: "ch-1", title: "Ganti Sprei & Sarung Bantal Semua Kamar", subtitle: "Kamar Tidur Utama & Anak", category: "Tiap 2 Pekan", status: "active", date: "2026-09-27", priority: "medium", meta: { assignee: "Ibu & ART", durationEst: "45 Menit" } },
-      { id: "ch-2", title: "Pembersihan Kerak Kaca Kamar Mandi & Disinfektan", subtitle: "Kamar Mandi", category: "Mingguan", status: "completed", date: "2026-09-20", priority: "medium", meta: { assignee: "Ayah", durationEst: "40 Menit" } },
-    ],
+    initialRecords: [],
   },
   "home-maintenance": {
     id: "home-maintenance",
@@ -1632,10 +1477,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "cost", label: "Biaya Jasa & Sparepart", placeholder: "Rp 350.000 (Cuci 4 Unit AC)" },
       ],
     },
-    initialRecords: [
-      { id: "hm-1", title: "Cuci Rutin & Cek Freon 4 Unit AC Rumah", subtitle: "Semua Unit AC Kamar & Ruang Tamu", category: "Rutin 3 Bulanan", status: "active", date: "2026-10-10", priority: "high", meta: { technician: "CV Sejuk Abadi (Pak Joko)", cost: "Rp 320.000" } },
-      { id: "hm-2", title: "Penggantian Kartrid Filter Air Bersih Sumur", subtitle: "Sistem Filtrasi Air Tanah", category: "Rutin 6 Bulanan", status: "completed", date: "2026-07-05", priority: "medium", meta: { technician: "Dikerjakan Sendiri", cost: "Rp 180.000 (Beli Filter)" } },
-    ],
+    initialRecords: [],
   },
   "vehicle-logbook": {
     id: "vehicle-logbook",
@@ -1662,10 +1504,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "chassisNo", label: "Nomor Rangka / Mesin", placeholder: "MHF11... / 1TR-FE..." },
       ],
     },
-    initialRecords: [
-      { id: "vl-1", title: "Toyota Kijang Innova (B 1829 XYZ)", subtitle: "Zenix Hybrid 2024 - Hitam Metalik", category: "BBM: RON 92 (Pertamax)", status: "active", date: "2027-02-14", priority: "high", meta: { currentKm: "18.420 km", chassisNo: "MHK182901293810" } },
-      { id: "vl-2", title: "Honda Vario 160 (B 4920 ABC)", subtitle: "CBS 2023 - Putih Mutiara", category: "BBM: RON 92", status: "active", date: "2026-12-05", priority: "medium", meta: { currentKm: "9.310 km", chassisNo: "MH1KF192001923" } },
-    ],
+    initialRecords: [],
   },
   "vehicle-service": {
     id: "vehicle-service",
@@ -1692,10 +1531,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "workshop", label: "Bengkel Resmi Langganan", placeholder: "Auto2000 Cilandak" },
       ],
     },
-    initialRecords: [
-      { id: "vs-1", title: "Servis Berkala 20.000 km (Innova Zenix)", subtitle: "Target Odometer: 20.000 km", category: "Innova Zenix", status: "active", date: "2026-11-20", priority: "high", meta: { partsReplaced: "Oli Mesin 0W-20, Filter Oli, Rotasi Ban", workshop: "Auto2000 Resmi" } },
-      { id: "vs-2", title: "Ganti Oli Mesin & Oli Gardan (Vario 160)", subtitle: "Realisasi Odometer: 8.500 km", category: "Honda Vario", status: "completed", date: "2026-08-10", priority: "medium", meta: { partsReplaced: "Oli MPX2 10W-30 + Oli Gardan", workshop: "AHASS Resmi" } },
-    ],
+    initialRecords: [],
   },
 
   // 3. People, Family, and Society
@@ -1724,10 +1560,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "familyNotes", label: "Detail Keluarga / Pasangan", placeholder: "Istri: Rina, Anak: 2 orang" },
       ],
     },
-    initialRecords: [
-      { id: "crm-1", title: "Ir. Bambang Wicaksono, M.Sc", subtitle: "Senior Mentor Industri & Dosen", category: "Inner Circle", status: "active", date: "1972-11-12", priority: "high", meta: { interests: "Catur, Golf, Kebijakan Publik", familyNotes: "Pensiunan BUMN, tinggal di BSD" } },
-      { id: "crm-2", title: "dr. Dimas Prasetya", subtitle: "Sahabat Kuliah & Konsultan Medis", category: "Sahabat", status: "active", date: "1988-04-03", priority: "medium", meta: { interests: "Sepeda Gravel, Buku Sejarah", familyNotes: "Istri: dr. Sarah, 1 anak perempuan" } },
-    ],
+    initialRecords: [],
   },
   "keep-in-touch": {
     id: "keep-in-touch",
@@ -1754,10 +1587,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "topicToAsk", label: "Topik yang Ingin Ditanyakan", placeholder: "Kabar proyek barunya & keluarga" },
       ],
     },
-    initialRecords: [
-      { id: "kit-1", title: "Prof. Gunawan (Pembimbing Disertasi)", subtitle: "Ritme: Tiap 2 Bulan Sekali", category: "Telepon / Sowan", status: "urgent", date: "2026-09-25", priority: "high", meta: { lastContacted: "24 Juli 2026", topicToAsk: "Tanya kabar kesehatan dan kirim artikel riset terbaru" } },
-      { id: "kit-2", title: "Reza Fahmi (Eks Partner Bisnis)", subtitle: "Ritme: Tiap 1 Bulan", category: "WhatsApp / Ngopi", status: "completed", date: "2026-10-18", priority: "medium", meta: { lastContacted: "18 September 2026", topicToAsk: "Diskusi peluang kerja sama Q4" } },
-    ],
+    initialRecords: [],
   },
   "interaction-log": {
     id: "interaction-log",
@@ -1784,10 +1614,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "location", label: "Tempat / Kafe", placeholder: "Plaza Senayan Cafe" },
       ],
     },
-    initialRecords: [
-      { id: "il-1", title: "Diskusi Tren Regulasi Ekspor-Impor 2027", subtitle: "Bersama: Bpk. Haryono (Asosiasi Logistik)", category: "Makan Siang Profesional", status: "active", date: "2026-09-17", priority: "high", meta: { keyPoints: "Akan mengirimkan draft analisis awal minggu depan", location: "Resto Senopati" } },
-      { id: "il-2", title: "Sesi Diskusi Mentor Karier", subtitle: "Bersama: Alumni Junior Angkatan 2022", category: "Mentorship", status: "completed", date: "2026-09-10", priority: "low", meta: { keyPoints: "Memberikan masukan portofolio CV", location: "Zoom Online" } },
-    ],
+    initialRecords: [],
   },
   "family-hub": {
     id: "family-hub",
@@ -1814,10 +1641,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "budgetAlloc", label: "Alokasi Anggaran Acara", placeholder: "Rp 1.500.000" },
       ],
     },
-    initialRecords: [
-      { id: "fh-1", title: "Ujian Tengah Semester Anak Sulung (SMP)", subtitle: "Untuk: Kakak (Anak Pertama)", category: "Sekolah & Edukasi", status: "active", date: "2026-10-05", priority: "high", meta: { notesFamily: "Temani belajar tiap jam 19:30 - 21:00", budgetAlloc: "Beli buku latihan" } },
-      { id: "fh-2", title: "Kumpul Makan Malam Syukuran Keluarga", subtitle: "Untuk: Semua Anggota Keluarga", category: "Acara Domestik", status: "completed", date: "2026-09-14", priority: "medium", meta: { notesFamily: "Restoran Seafood Favorit Kakek", budgetAlloc: "Rp 1.800.000" } },
-    ],
+    initialRecords: [],
   },
   "family-tree": {
     id: "family-tree",
@@ -1844,10 +1668,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "birthPlace", label: "Kota Asal / Tempat Lahir", placeholder: "Yogyakarta" },
       ],
     },
-    initialRecords: [
-      { id: "ft-1", title: "K.H. Ahmad Dahlan Soediro (Alm)", subtitle: "Kakek dari Pihak Ayah", category: "Pihak Ayah", status: "completed", date: "1935 - 2012", priority: "high", meta: { generation: "Generasi 1 (Kakek)", birthPlace: "Surakarta, Jawa Tengah" } },
-      { id: "ft-2", title: "Drs. Hendro Wibowo & Hj. Siti Aminah", subtitle: "Orang Tua Kandung", category: "Keluarga Inti", status: "active", date: "1960 & 1963", priority: "high", meta: { generation: "Generasi 2 (Orang Tua)", birthPlace: "Semarang & Solo" } },
-    ],
+    initialRecords: [],
   },
   "family-events": {
     id: "family-events",
@@ -1874,10 +1695,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "pemenangArisan", label: "Pemenang Undian Sebelumnya", placeholder: "Tante Endang (Agustus)" },
       ],
     },
-    initialRecords: [
-      { id: "fev-1", title: "Arisan Trah Keluarga Soediro Periode Oktober", subtitle: "Tuan Rumah: Keluarga Tante Ratih", category: "Arisan Bulanan", status: "active", date: "2026-10-18", priority: "high", meta: { locationEvent: "Jl. Dahlia No. 14, Jagakarsa", pemenangArisan: "Om Danang (September)" } },
-      { id: "fev-2", title: "Reuni Akbar Bani Soediro 2027", subtitle: "Panitia Pelaksana: Generasi Muda", category: "Reuni Tahunan", status: "pending", date: "2027-04-12", priority: "medium", meta: { locationEvent: "Villa Kaliurang, Yogyakarta", pemenangArisan: "Seluruh Keluarga Besar" } },
-    ],
+    initialRecords: [],
   },
   "neighborhood": {
     id: "neighborhood",
@@ -1904,10 +1722,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "duties", label: "Jam Tugas / Informasi Khusus", placeholder: "Pos Satpam 24 Jam (Komandan Regu: Pak Yono)" },
       ],
     },
-    initialRecords: [
-      { id: "nb-1", title: "Pos Keamanan & Satpam Gerbang Utama", subtitle: "Komandan Regu: Pak Wahyu", category: "Keamanan 24 Jam", status: "active", date: "Siaga Selalu", priority: "high", meta: { phone: "021-74892019 / HT Ch 3", duties: "Layanan tamu wajib lapor 1x24 jam" } },
-      { id: "nb-2", title: "Ketua RT 05 / RW 08 (Bpk. H. Sukirno)", subtitle: "Pengurus RT Masa Bakti 2024 - 2027", category: "Administrasi Warga", status: "active", date: "2027-12-31", priority: "medium", meta: { phone: "0812-8819-2019", duties: "Pelayanan surat pengantar: Jam 19:00 - 21:00" } },
-    ],
+    initialRecords: [],
   },
   "memberships": {
     id: "memberships",
@@ -1934,10 +1749,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "annualFee", label: "Iuran Tahunan", placeholder: "Rp 500.000 / tahun" },
       ],
     },
-    initialRecords: [
-      { id: "mb-1", title: "Ikatan Konsultan Manajemen Indonesia (IKMI)", subtitle: "KTA-IKMI-2022-0941", category: "Asosiasi Profesi", status: "active", date: "2027-12-31", priority: "high", meta: { role: "Anggota Utama", annualFee: "Rp 750.000 / th" } },
-      { id: "mb-2", title: "Ikatan Alumni Magister Universitas Indonesia (ILUNI)", subtitle: "KTA: 2021-MM-00192", category: "Ikatan Alumni", status: "active", date: "Seumur Hidup", priority: "medium", meta: { role: "Anggota Seumur Hidup", annualFee: "Bebas Iuran" } },
-    ],
+    initialRecords: [],
   },
   "social-impact": {
     id: "social-impact",
@@ -1964,10 +1776,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "beneficiary", label: "Penerima Manfaat", placeholder: "Anak Yatim Piatu / Korban Banjir" },
       ],
     },
-    initialRecords: [
-      { id: "si-1", title: "Donor Darah Rutin PMI Unit Donor Darah Jaksel", subtitle: "Donor Darah Sukarela ke-16", category: "Kesehatan Publik", status: "completed", date: "2026-08-05", priority: "medium", meta: { bloodDonorCount: "Ke-16 (Gol. O+)", beneficiary: "Pasien Rumah Sakit Kanker" } },
-      { id: "si-2", title: "Program Bimbingan Belajar Gratis Anak Pesisir", subtitle: "Relawan Pengajar Literasi Keuangan", category: "Pendidikan", status: "active", date: "2026-09-12", priority: "high", meta: { bloodDonorCount: "Yayasan Sahabat Pesisir", beneficiary: "35 Siswa SD" } },
-    ],
+    initialRecords: [],
   },
   "civic-guide": {
     id: "civic-guide",
@@ -1994,10 +1803,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "phonePublic", label: "Call Center / WhatsApp", placeholder: "021-1500xxx" },
       ],
     },
-    initialRecords: [
-      { id: "cg-1", title: "Kantor Kelurahan & Layanan Dukcapil Terpadu", subtitle: "Jl. Cilandak Barat No. 2 | 08:00 - 15:00", category: "Kependudukan", status: "active", date: "2026-09-01", priority: "high", meta: { requirements: "KTP, KK, Formulir F-1.01", phonePublic: "021-7501920" } },
-      { id: "cg-2", title: "Kantor Samsat Pembantu Jakarta Selatan", subtitle: "Perpanjangan STNK Tahunan & 5 Tahunan", category: "Pajak Kendaraan", status: "active", date: "2026-08-15", priority: "medium", meta: { requirements: "STNK Asli, BPKB Asli, KTP Asli sesuai nama", phonePublic: "021-5264005" } },
-    ],
+    initialRecords: [],
   },
   "emergency-hub": {
     id: "emergency-hub",
@@ -2028,7 +1834,6 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       { id: "sos-1", title: "Polisi Republik Indonesia (Siaga Kriminal)", subtitle: "Hotline Bebas Pulsa: 110", category: "Keamanan Publik", status: "urgent", date: "24 Jam", priority: "high", meta: { iceRelation: "Polres / Polsek Terdekat", quickGuide: "Tetap tenang, sebutkan lokasi jalan jelas" } },
       { id: "sos-2", title: "Pemadam Kebakaran & Penyelamatan (Damkar)", subtitle: "Hotline Darurat: 113", category: "Kebakaran & Evakuasi", status: "urgent", date: "24 Jam", priority: "high", meta: { iceRelation: "Sektor Pemadam Wilayah", quickGuide: "Putus aliran gas dan listrik sebelum evakuasi" } },
       { id: "sos-3", title: "Ambulans Gawat Darurat & PMI", subtitle: "Hotline: 118 / 119", category: "Medis Darurat", status: "urgent", date: "24 Jam", priority: "high", meta: { iceRelation: "Dinas Kesehatan", quickGuide: "Lakukan pertolongan pertama henti pendarahan" } },
-      { id: "sos-4", title: "Kontak Darurat Utama (Istri / Keluarga ICE)", subtitle: "HP: 0812-9988-7766", category: "Keluarga Inti", status: "active", date: "24 Jam Aktif", priority: "high", meta: { iceRelation: "Pasangan (In Case of Emergency)", quickGuide: "Kunci pintu cadangan di brankas" } },
     ],
   },
   "civic-compliance": {
@@ -2056,10 +1861,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
         { key: "statusNotes", label: "Catatan Kelengkapan", placeholder: "Sertifikat Hak Milik (SHM) Asli aman" },
       ],
     },
-    initialRecords: [
-      { id: "cc-1", title: "Sertifikat Hak Milik (SHM) Rumah Tinggal", subtitle: "No. Sertifikat: SHM-01928-JKT", category: "Legal Properti", status: "completed", date: "Hak Milik Tetap", priority: "high", meta: { governingBody: "Kantor Pertanahan BPN Jaksel", statusNotes: "Tersimpan di Safe Deposit Box Bank" } },
-      { id: "cc-2", title: "Izin Persetujuan Bangunan Gedung (PBG) Renovasi", subtitle: "SK No: PBG-2025-001298", category: "Izin Hunian", status: "completed", date: "Berlaku Permanen", priority: "medium", meta: { governingBody: "Dinas Cipta Karya & Tata Ruang", statusNotes: "Renovasi kanopi & lantai 2 tervalidasi" } },
-    ],
+    initialRecords: [],
   },
 
   // -------------------------------------------------------------
@@ -2086,10 +1888,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Tingkat Kedekatan (Inner / Close / Network)",
       date: "Terakhir Interaksi",
     },
-    initialRecords: [
-      { id: "cg-1", title: "Dewan Penasihat Bisnis", subtitle: "Pak Bambang & dr. Dimas", category: "Inner Circle", status: "active", date: "2026-09-20", priority: "high" },
-      { id: "cg-2", title: "Kolega Konsultan Senior", subtitle: "Rekan kolaborasi proyek", category: "Profesional", status: "active", date: "2026-09-15", priority: "medium" },
-    ],
+    initialRecords: [],
   },
 
   "catchup-cadence": {
@@ -2113,10 +1912,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Kanal Komunikasi (WA / Telepon / Kopi)",
       date: "Jadwal Sapa Berikutnya",
     },
-    initialRecords: [
-      { id: "cc-1", title: "Prof. Gunawan (Dosen Pembimbing)", subtitle: "Ritme 2 Bulan Sekali", category: "Sowan / Telepon", status: "urgent", date: "2026-09-25", priority: "high" },
-      { id: "cc-2", title: "Reza Fahmi (Sahabat Kuliah)", subtitle: "Ritme 1 Bulan Sekali", category: "Kopi / Diskusi", status: "completed", date: "2026-10-18", priority: "medium" },
-    ],
+    initialRecords: [],
   },
 
   "family-rules": {
@@ -2140,10 +1936,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Aspek (Screen Time / Jam Malam / Tugas Rumah)",
       date: "Tanggal Ditetapkan",
     },
-    initialRecords: [
-      { id: "fr-1", title: "Batas Penggunaan Gawai & Screen Time", subtitle: "Maksimal 2 jam/hari & bebas gawai di meja makan", category: "Digital Wellbeing", status: "active", date: "2026-01-01", priority: "high" },
-      { id: "fr-2", title: "Jam Hening & Istirahat Malam", subtitle: "Lampu redup & pintu gerbang terkunci jam 22:00", category: "Tata Tertib Rumah", status: "active", date: "2026-01-01", priority: "medium" },
-    ],
+    initialRecords: [],
   },
 
   "family-archive": {
@@ -2167,10 +1960,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Jenis Dokumen (Kependudukan / Sertifikat / Legal)",
       date: "Masa Berlaku / Terbit",
     },
-    initialRecords: [
-      { id: "fa-1", title: "Kartu Keluarga (KK) Barcode Resmi", subtitle: "Kepala Keluarga: Hendro Wibowo", category: "Kependudukan", status: "active", date: "Berlaku Tetap", priority: "high" },
-      { id: "fa-2", title: "Paspor Elektronik (E-Passport)", subtitle: "Masa aktif 10 tahun s/d 2034", category: "Imigrasi", status: "active", date: "2034-05-12", priority: "high" },
-    ],
+    initialRecords: [],
   },
 
   "medical-family": {
@@ -2194,10 +1984,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Daftar Alergi (Antibiotik Penisilin / Makanan Laut)",
       date: "Pemeriksaan Medis Terakhir",
     },
-    initialRecords: [
-      { id: "mf-1", title: "Ayah (Hendro)", subtitle: "Golongan Darah: O Rhesus +", category: "Alergi: Tidak ada alergi obat", status: "active", date: "2026-06-10", priority: "medium" },
-      { id: "mf-2", title: "Anak Sulung (Rafi)", subtitle: "Golongan Darah: B Rhesus +", category: "Alergi: Alergi Penisilin (Amoxicillin)", status: "urgent", date: "2026-08-22", priority: "high" },
-    ],
+    initialRecords: [],
   },
 
   "borrowed-items": {
@@ -2221,10 +2008,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Tipe (Dipinjamkan Keluar / Dipinjam Masuk)",
       date: "Target Pengembalian",
     },
-    initialRecords: [
-      { id: "bi-1", title: "Set Perkakas Bor Tangan Bosch", subtitle: "Dipinjam oleh: Tetangga Rumah No. 12 (Pak Doni)", category: "Dipinjamkan Keluar", status: "active", date: "2026-09-30", priority: "medium" },
-      { id: "bi-2", title: "Buku Ensiklopedia Sejarah Nusantara", subtitle: "Dipinjam dari: Om Danang", category: "Dipinjam Masuk", status: "active", date: "2026-10-15", priority: "low" },
-    ],
+    initialRecords: [],
   },
 
   "gift-tracker": {
@@ -2248,10 +2032,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Ide Hadiah / Barang (Buku / Parcel / Emas Mini)",
       date: "Tanggal Acara / Penyerahan",
     },
-    initialRecords: [
-      { id: "gt-1", title: "Pernikahan Sarah & Reza", subtitle: "Kado Pernikahan Sahabat Dekat", category: "Coffee Maker Manual Set", status: "active", date: "2026-10-12", priority: "high" },
-      { id: "gt-2", title: "Ulang Tahun Ibu ke-63", subtitle: "Hadiah Spesial Hari Jadi", category: "Sajadah Sutra & Mukena Katun Jepang", status: "completed", date: "2026-08-19", priority: "high" },
-    ],
+    initialRecords: [],
   },
 
   "reunion-planner": {
@@ -2275,10 +2056,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Jenis Acara (Arisan Trah / Reuni Angkatan)",
       date: "Tanggal Pelaksanaan",
     },
-    initialRecords: [
-      { id: "rp-1", title: "Arisan Trah Keluarga Bani Soediro", subtitle: "Tuan Rumah: Kediaman Tante Ratih (Jagakarsa)", category: "Arisan Bulanan", status: "active", date: "2026-10-18", priority: "high" },
-      { id: "rp-2", title: "Reuni Perak 25 Tahun Alumni SMA 1", subtitle: "Ballroom Hotel Santika", category: "Reuni Akbar", status: "active", date: "2027-01-20", priority: "medium" },
-    ],
+    initialRecords: [],
   },
 
   "family-anniversary": {
@@ -2302,10 +2080,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Hubungan (Keluarga Inti / Mertua / Ponakan)",
       date: "Tanggal Hari Jadi",
     },
-    initialRecords: [
-      { id: "fa-1", title: "Ulang Tahun Pernikahan Ayah & Ibu ke-35", subtitle: "Ulang Tahun Pernikahan Perak", category: "Keluarga Inti", status: "urgent", date: "2026-10-04", priority: "high" },
-      { id: "fa-2", title: "Milad Adik Bungsu (Nadia)", subtitle: "Ulang Tahun ke-21", category: "Adik Kandung", status: "active", date: "2026-11-15", priority: "medium" },
-    ],
+    initialRecords: [],
   },
 
   "rt-rw-directory": {
@@ -2329,10 +2104,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Status (Ketua RT / Satpam / Warga Tetap)",
       date: "Periode Domisili",
     },
-    initialRecords: [
-      { id: "rtd-1", title: "Ketua RT 04 (Bpk. H. Sukirno)", subtitle: "Rumah Blok B No. 12 | 0812-8819-2019", category: "Pengurus RT", status: "active", date: "2024 - 2027", priority: "high" },
-      { id: "rtd-2", title: "Pos Keamanan Gerbang Timur", subtitle: "Komandan Regu: Pak Wahyu (24 Jam)", category: "Satpam Lingkungan", status: "active", date: "Siaga 24/7", priority: "high" },
-    ],
+    initialRecords: [],
   },
 
   "community-announcements": {
@@ -2356,10 +2128,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Kategori (Kerja Bakti / Keamanan / Sanitasi)",
       date: "Tanggal Berlakunya Informasi",
     },
-    initialRecords: [
-      { id: "ca-1", title: "Kerja Bakti Massal Pembersihan Saluran Air Musim Hujan", subtitle: "Kumpul jam 07:00 WIB di Lapangan Balai RT", category: "Gotong Royong", status: "urgent", date: "2026-10-04", priority: "high" },
-      { id: "ca-2", title: "Jadwal Fogging Nyamuk DBD Puskesmas", subtitle: "Mohon tutup rapat makanan dan ventilasi aman", category: "Kesehatan Lingkungan", status: "active", date: "2026-10-10", priority: "high" },
-    ],
+    initialRecords: [],
   },
 
   "membership-card": {
@@ -2383,10 +2152,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Jenis (Profesi / Alumni / Warga Perumahan)",
       date: "Masa Berlaku KTA",
     },
-    initialRecords: [
-      { id: "mc-1", title: "Koperasi Warga Maju Bersama", subtitle: "Nomor Anggota: KOP-2023-0198", category: "Koperasi Lingkungan", status: "active", date: "Seumur Hidup", priority: "medium" },
-      { id: "mc-2", title: "Ikatan Alumni ITB (IA-ITB)", subtitle: "KTA-2020-004128", category: "Ikatan Alumni", status: "active", date: "2028-12-31", priority: "high" },
-    ],
+    initialRecords: [],
   },
 
   "meeting-resolutions": {
@@ -2410,10 +2176,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Sifat Keputusan (Keamanan / Iuran / Tata Tertib)",
       date: "Tanggal Rapat Diselenggarakan",
     },
-    initialRecords: [
-      { id: "mr-1", title: "Musyawarah Pembahasan Portal Otomatis Gerbang", subtitle: "Disetujui pemasangan barrier gate sensor RFID warga", category: "Keamanan Lingkungan", status: "active", date: "2026-09-08", priority: "high" },
-      { id: "mr-2", title: "Rapat Tahunan Laporan Pertanggungjawaban Kas RT", subtitle: "Laporan saldo surplus kas Rp 48.200.000 disetujui aklamasi", category: "Keuangan RT", status: "completed", date: "2026-08-15", priority: "medium" },
-    ],
+    initialRecords: [],
   },
 
   "public-services-guide": {
@@ -2437,10 +2200,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Kategori Layanan (Dukcapil / Puskesmas / Polsek)",
       date: "Update Informasi",
     },
-    initialRecords: [
-      { id: "psg-1", title: "Pelayanan Terpadu Kelurahan Cilandak Barat", subtitle: "Layanan KTP, KK, Surat Pengantar | 08:00 - 15:00", category: "Dukcapil", status: "active", date: "2026-09-01", priority: "high" },
-      { id: "psg-2", title: "Puskesmas Kecamatan 24 Jam", subtitle: "Jl. Margaguna Raya | Unit Gawat Darurat & Rawat Inap", category: "Kesehatan Publik", status: "active", date: "2026-09-10", priority: "high" },
-    ],
+    initialRecords: [],
   },
 
   "civic-calendar": {
@@ -2464,10 +2224,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Jenis Agenda (Libur Nasional / Pemilu / Cuti Bersama)",
       date: "Tanggal Agenda",
     },
-    initialRecords: [
-      { id: "cc-1", title: "Pilkada Serentak Pemilihan Kepala Daerah", subtitle: "TPS Balai Warga RT 04 | Bawa KTP & C-Pemberitahuan", category: "Pemilu & Demokrasi", status: "urgent", date: "2026-11-27", priority: "high" },
-      { id: "cc-2", title: "Hari Raya Idul Fitri 1448 H & Cuti Bersama", subtitle: "Libur nasional dan cuti bersama 5 hari", category: "Hari Libur Nasional", status: "active", date: "2027-03-09", priority: "high" },
-    ],
+    initialRecords: [],
   },
 
   "civil-registry": {
@@ -2491,10 +2248,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Jenis Layanan (Surat Pindah / KTP Hilang / SKCK)",
       date: "Tanggal Pengajuan",
     },
-    initialRecords: [
-      { id: "cr-1", title: "Surat Keterangan Domisili Tinggal Warga Baru", subtitle: "Pemohon: Keluarga dr. Prasetya (Pindahan Bandung)", category: "Domisili Warga", status: "active", date: "2026-09-22", priority: "high" },
-      { id: "cr-2", title: "Surat Pengantar Pembuatan Akta Kelahiran", subtitle: "Atas Nama Bayi: Annisa Salsabila (Putri Pak Doni)", category: "Kelahiran Baru", status: "completed", date: "2026-09-12", priority: "medium" },
-    ],
+    initialRecords: [],
   },
 
   "tax-civic": {
@@ -2518,10 +2272,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Kategori (PBB Bangunan / Iuran Sampah & Ronda)",
       date: "Batas Waktu Bayar / Tanggal Bayar",
     },
-    initialRecords: [
-      { id: "tc-1", title: "Pajak Bumi & Bangunan (PBB-P2) Rumah 2026", subtitle: "NOP: 31.74.020.005.012-0091.0 | Rp 2.450.000", category: "Pajak Properti", status: "completed", date: "2026-08-28", priority: "high" },
-      { id: "tc-2", title: "Iuran Pengelolaan Lingkungan (IPL) & Keamanan", subtitle: "Iuran Periode Oktober 2026 | Rp 250.000", category: "Iuran Warga Bulanan", status: "urgent", date: "2026-10-10", priority: "high" },
-    ],
+    initialRecords: [],
   },
 
   "donation-tracker": {
@@ -2545,10 +2296,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Jenis (Infaq Subuh / Sedekah Jumat / Wakaf)",
       date: "Tanggal Penyaluran",
     },
-    initialRecords: [
-      { id: "dt-1", title: "Infaq Subuh Gerakan 1000 Yatim BAZNAS", subtitle: "Nominal: Rp 300.000 / bulan", category: "Infaq Bulanan", status: "completed", date: "2026-09-20", priority: "high" },
-      { id: "dt-2", title: "Sedekah Beras & Sembako Masjid Al-Ikhlas", subtitle: "Nominal: Rp 500.000 untuk paket sembako dhuafa", category: "Sedekah Beras", status: "completed", date: "2026-09-15", priority: "medium" },
-    ],
+    initialRecords: [],
   },
 
   "volunteer-log": {
@@ -2572,10 +2320,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Bidang (Kesehatan / Edukasi / Bencana Alam)",
       date: "Tanggal Partisipasi",
     },
-    initialRecords: [
-      { id: "vl-1", title: "Donor Darah Sukarela PMI Unit Jaksel", subtitle: "Donor ke-18 | Golongan Darah O+", category: "Kesehatan Sosial", status: "completed", date: "2026-08-05", priority: "high" },
-      { id: "vl-2", title: "Posko Relawan Dapur Umum Tanggap Bencana", subtitle: "Koordinator Logistik Distribusi Makanan Siap Saji", category: "Tanggap Bencana", status: "completed", date: "2026-07-14", priority: "high" },
-    ],
+    initialRecords: [],
   },
 
   "komunitas-warga": {
@@ -2599,10 +2344,7 @@ export const STANDALONE_APPS: Record<string, StandaloneAppConfig> = {
       category: "Bidang (RT/RW / Fasilitas / Iuran)",
       date: "Jadwal / Pembaruan",
     },
-    initialRecords: [
-      { id: "kw-1", title: "Buku Warga & Satpam RT 04", subtitle: "Direktori pengurus & keamanan siaga", category: "Buku Warga", status: "active", date: "2026", priority: "high" },
-      { id: "kw-2", title: "Iuran Pengelolaan Lingkungan (IPL) & PBB", subtitle: "Rekapitulasi iuran kebersihan dan PBB tahunan", category: "Iuran Lingkungan", status: "urgent", date: "Oktober 2026", priority: "high" },
-    ],
+    initialRecords: [],
   },
 };
 
@@ -2617,4 +2359,3 @@ export function getAllStandaloneAppKeys(): string[] {
 export function getAllStandaloneApps(): StandaloneAppConfig[] {
   return Object.values(STANDALONE_APPS);
 }
-

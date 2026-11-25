@@ -11,6 +11,8 @@ import {
   readWorkspaceOrLegacy,
   setItem,
 } from "../storage";
+import { filterExactSeedRecords } from "../legacySeed";
+import { LEGACY_REPO_SEED_FINGERPRINTS } from "./legacySeedFingerprints";
 
 export type ClientRecord = {
   id: string;
@@ -293,12 +295,26 @@ export function loadCollectionFromStorage<T>(params: {
   });
 
   if (readResult.foundIn === "workspace" && Array.isArray(readResult.value)) {
-    return cloneCollection(readResult.value as T[]);
+    const records = filterExactSeedRecords(
+      readResult.value as Array<T & { id?: unknown }>,
+      LEGACY_REPO_SEED_FINGERPRINTS[storageKey],
+    );
+    if (records.length !== readResult.value.length) {
+      saveCollectionToStorage(storageKey, workspaceId, records);
+    }
+    return cloneCollection(records);
   }
 
   if (readResult.foundIn === "legacy" && Array.isArray(readResult.value)) {
     if (!requireNonEmptyLegacy || readResult.value.length > 0) {
-      return cloneCollection(readResult.value as T[]);
+      const records = filterExactSeedRecords(
+        readResult.value as Array<T & { id?: unknown }>,
+        LEGACY_REPO_SEED_FINGERPRINTS[storageKey],
+      );
+      if (records.length !== readResult.value.length) {
+        saveCollectionToStorage(storageKey, workspaceId, records);
+      }
+      return cloneCollection(records);
     }
   }
 

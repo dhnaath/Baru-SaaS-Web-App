@@ -628,9 +628,9 @@ function AppShellInner({
           />
         )}
         <header ref={headerRef as any} className={`absolute top-0 inset-x-0 ${isTopPanelOpen ? "z-50" : "z-20"} pointer-events-none transition-all duration-300`}>
-          <div className="flex items-center justify-between gap-3 px-3 py-3 sm:px-5 pointer-events-none">
+          <div data-mobile-header="true" className="flex items-center justify-between gap-3 px-3 py-3 sm:px-5 pointer-events-none">
             {/* Bagian Kiri Header: 2 Floating Pills */}
-            <div className="flex items-center gap-2">
+            <div data-mobile-header-primary="true" className="flex items-center gap-2">
               {/* Pill 1: Nav Toggle (Sidebar Kiri) & Home */}
               <div className="pointer-events-auto flex items-center gap-1 p-1 rounded-full liquid-glass-header-pill">
                 <button
@@ -679,9 +679,10 @@ function AppShellInner({
             </div>
 
             {/* Bagian Kanan Header: 3 Floating Pills */}
-            <div className="flex items-center gap-2 min-w-0">
+            <div data-mobile-header-tools="true" className="flex items-center gap-2 min-w-0">
               {/* Pill Shape Wadah Utama tempat elemen aksi & portal disiapkan */}
               <div
+                data-mobile-header-actions="true"
                 className={`pointer-events-auto h-[46px] min-h-[46px] w-auto max-w-[calc(100vw-130px)] md:max-w-none rounded-full shrink-0 transition-all duration-300 ease-out ${
                   hasAppHeader || actions ? "flex items-center justify-end" : "hidden"
                 } ${
@@ -736,6 +737,7 @@ function AppShellInner({
               <div className="pointer-events-auto flex items-center gap-1 p-1 rounded-full liquid-glass-header-pill shrink-0">
                 <button
                   type="button"
+                  data-mobile-hide="true"
                   className="group relative z-10 size-9 rounded-full aspect-square shrink-0 transition-colors flex items-center justify-center cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent"
                   title="Bintang"
                   aria-label="Bintang"

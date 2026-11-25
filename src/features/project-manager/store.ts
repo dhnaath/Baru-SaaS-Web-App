@@ -15,6 +15,9 @@ import {
   MemberRole,
 } from "./types";
 import { Task, TaskStatus, TaskPriority } from "../task-manager/types";
+import { filterExactSeedRecords, LEGACY_DYNAMIC_SEED_FIELDS } from "../../core/legacySeed";
+import { LEGACY_PROJECT_MANAGER_SEED_FINGERPRINTS } from "./legacySeedFingerprints";
+import { LEGACY_TASK_MANAGER_SEED_FINGERPRINTS } from "../task-manager/legacySeedFingerprints";
 
 const PROJECT_STORAGE_KEY = "aio_project_manager_data_v1";
 const TASK_STORAGE_KEY = "aio_task_manager_data_v1";
@@ -29,290 +32,19 @@ interface ProjectManagerState {
   activities: ProjectActivity[];
 }
 
-const DEFAULT_PROJECTS: Project[] = [
-  {
-    id: "p-audit",
-    name: "Audit Manajemen & Tata Kelola Perusahaan",
-    description: "Evaluasi menyeluruh terhadap sistem pengendalian internal, tata kelola, dan kepatuhan regulasi klien.",
-    status: "active",
-    startAt: new Date(Date.now() - 14 * 86400000).toISOString(),
-    dueAt: new Date(Date.now() + 30 * 86400000).toISOString(),
-    ownerId: "u-consultant-lead",
-    ownerName: "Partner Eksekutif",
-    tags: ["Audit", "Governance", "Klien Korporasi"],
-    budgetSummary: {
-      allocated: 150000000,
-      spent: 65000000,
-      currency: "IDR",
-    },
-    createdAt: new Date(Date.now() - 14 * 86400000).toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-  {
-    id: "p-digital",
-    name: "Digital Transformation & Workflow Automation",
-    description: "Pembaruan arsitektur sistem operasi internal, integrasi antar-aplikasi mandiri, dan standarisasi proses bisnis.",
-    status: "active",
-    startAt: new Date(Date.now() - 21 * 86400000).toISOString(),
-    dueAt: new Date(Date.now() + 45 * 86400000).toISOString(),
-    ownerId: "u-tech-lead",
-    ownerName: "Konsultan Teknologi Senior",
-    tags: ["Digital", "Automasi", "Internal"],
-    budgetSummary: {
-      allocated: 280000000,
-      spent: 120000000,
-      currency: "IDR",
-    },
-    createdAt: new Date(Date.now() - 21 * 86400000).toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-  {
-    id: "p-expansion",
-    name: "Ekspansi Bisnis & Valuasi Pasar Regional",
-    description: "Analisis kelayakan pasar regional, pemodelan keuangan merger, dan strategi go-to-market.",
-    status: "planning",
-    startAt: new Date(Date.now() + 7 * 86400000).toISOString(),
-    dueAt: new Date(Date.now() + 90 * 86400000).toISOString(),
-    ownerId: "u-strategy-director",
-    ownerName: "Direktur Strategi",
-    tags: ["Strategy", "M&A", "Growth"],
-    budgetSummary: {
-      allocated: 450000000,
-      spent: 15000000,
-      currency: "IDR",
-    },
-    createdAt: new Date(Date.now() - 3 * 86400000).toISOString(),
-    updatedAt: new Date().toISOString(),
-  },
-];
+export const DEFAULT_PROJECTS: Project[] = [];
 
-const DEFAULT_PHASES: Phase[] = [
-  // Phases for p-audit
-  {
-    id: "ph-audit-1",
-    projectId: "p-audit",
-    name: "Fase 1: Penilaian Awal & Pengumpulan Bukti",
-    order: 1,
-    startAt: new Date(Date.now() - 14 * 86400000).toISOString(),
-    dueAt: new Date(Date.now() - 2 * 86400000).toISOString(),
-    status: "completed",
-  },
-  {
-    id: "ph-audit-2",
-    projectId: "p-audit",
-    name: "Fase 2: Analisis Kepatuhan & Uji Lapangan",
-    order: 2,
-    startAt: new Date(Date.now() - 1 * 86400000).toISOString(),
-    dueAt: new Date(Date.now() + 14 * 86400000).toISOString(),
-    status: "active",
-  },
-  {
-    id: "ph-audit-3",
-    projectId: "p-audit",
-    name: "Fase 3: Penyusunan Laporan & Rekomendasi",
-    order: 3,
-    startAt: new Date(Date.now() + 15 * 86400000).toISOString(),
-    dueAt: new Date(Date.now() + 30 * 86400000).toISOString(),
-    status: "upcoming",
-  },
-  // Phases for p-digital
-  {
-    id: "ph-dig-1",
-    projectId: "p-digital",
-    name: "Phase 1: Riset & Pemetaan Proses Bisnis",
-    order: 1,
-    startAt: new Date(Date.now() - 21 * 86400000).toISOString(),
-    dueAt: new Date(Date.now() - 7 * 86400000).toISOString(),
-    status: "completed",
-  },
-  {
-    id: "ph-dig-2",
-    projectId: "p-digital",
-    name: "Phase 2: Desain Arsitektur & Prototyping",
-    order: 2,
-    startAt: new Date(Date.now() - 6 * 86400000).toISOString(),
-    dueAt: new Date(Date.now() + 10 * 86400000).toISOString(),
-    status: "active",
-  },
-  {
-    id: "ph-dig-3",
-    projectId: "p-digital",
-    name: "Phase 3: Integrasi Sistem & Deployment",
-    order: 3,
-    startAt: new Date(Date.now() + 11 * 86400000).toISOString(),
-    dueAt: new Date(Date.now() + 45 * 86400000).toISOString(),
-    status: "upcoming",
-  },
-];
+export const DEFAULT_PHASES: Phase[] = [];
 
-const DEFAULT_MILESTONES: Milestone[] = [
-  {
-    id: "ms-audit-1",
-    projectId: "p-audit",
-    phaseId: "ph-audit-1",
-    title: "Kickoff Meeting & Penerimaan Dokumen Awal",
-    targetDate: new Date(Date.now() - 10 * 86400000).toISOString(),
-    status: "achieved",
-    linkedTaskIds: ["task-1"],
-  },
-  {
-    id: "ms-audit-2",
-    projectId: "p-audit",
-    phaseId: "ph-audit-2",
-    title: "Draft Temuan Awal Disampaikan ke Dewan Direksi",
-    targetDate: new Date(Date.now() + 7 * 86400000).toISOString(),
-    status: "upcoming",
-    linkedTaskIds: ["task-2"],
-  },
-  {
-    id: "ms-audit-3",
-    projectId: "p-audit",
-    phaseId: "ph-audit-3",
-    title: "Penyerahan Laporan Final Opini Audit",
-    targetDate: new Date(Date.now() + 30 * 86400000).toISOString(),
-    status: "upcoming",
-    linkedTaskIds: [],
-  },
-  {
-    id: "ms-dig-1",
-    projectId: "p-digital",
-    phaseId: "ph-dig-1",
-    title: "Persetujuan Blueprint Arsitektur Aplikasi Mandiri",
-    targetDate: new Date(Date.now() - 7 * 86400000).toISOString(),
-    status: "achieved",
-    linkedTaskIds: [],
-  },
-  {
-    id: "ms-dig-2",
-    projectId: "p-digital",
-    phaseId: "ph-dig-2",
-    title: "UAT Modul Task & Project Manager Selesai",
-    targetDate: new Date(Date.now() + 8 * 86400000).toISOString(),
-    status: "upcoming",
-    linkedTaskIds: [],
-  },
-];
+export const DEFAULT_MILESTONES: Milestone[] = [];
 
-const DEFAULT_MEMBERS: Member[] = [
-  {
-    id: "m-1",
-    projectId: "p-audit",
-    userId: "u-consultant-lead",
-    name: "Partner Eksekutif",
-    email: "partner@firm.co.id",
-    role: "owner",
-    joinedAt: new Date(Date.now() - 14 * 86400000).toISOString(),
-  },
-  {
-    id: "m-2",
-    projectId: "p-audit",
-    userId: "u-audit-mgr",
-    name: "Senior Auditor Budi",
-    email: "budi.auditor@firm.co.id",
-    role: "manager",
-    joinedAt: new Date(Date.now() - 14 * 86400000).toISOString(),
-  },
-  {
-    id: "m-3",
-    projectId: "p-audit",
-    userId: "u-legal-counsel",
-    name: "Konsultan Hukum",
-    email: "legal@firm.co.id",
-    role: "contributor",
-    joinedAt: new Date(Date.now() - 10 * 86400000).toISOString(),
-  },
-  {
-    id: "m-4",
-    projectId: "p-digital",
-    userId: "u-tech-lead",
-    name: "Konsultan Teknologi Senior",
-    email: "techlead@firm.co.id",
-    role: "owner",
-    joinedAt: new Date(Date.now() - 21 * 86400000).toISOString(),
-  },
-  {
-    id: "m-5",
-    projectId: "p-digital",
-    userId: "u-dev-1",
-    name: "Fullstack Engineer",
-    email: "dev@firm.co.id",
-    role: "contributor",
-    joinedAt: new Date(Date.now() - 20 * 86400000).toISOString(),
-  },
-];
+export const DEFAULT_MEMBERS: Member[] = [];
 
-const DEFAULT_RISKS: Risk[] = [
-  {
-    id: "r-1",
-    projectId: "p-audit",
-    title: "Keterlambatan penyediaan data ledger historis oleh klien",
-    description: "Klien belum memberikan akses server akuntansi cabang Surabaya secara utuh.",
-    likelihood: "medium",
-    impact: "high",
-    status: "mitigating",
-    mitigationPlan: "Kirim surat permohonan eskalasi resmi ke CFO dan jadwalkan inspeksi langsung.",
-    ownerName: "Senior Auditor Budi",
-  },
-  {
-    id: "r-2",
-    projectId: "p-audit",
-    title: "Perubahan regulasi pelaporan pajak triwulanan",
-    description: "Harmonisasi aturan baru berpotensi merevisi klausul evaluasi risiko denda.",
-    likelihood: "low",
-    impact: "medium",
-    status: "identified",
-    mitigationPlan: "Koordinasikan dengan konsultan pajak internal untuk sinkronisasi template.",
-    ownerName: "Konsultan Hukum",
-  },
-  {
-    id: "r-3",
-    projectId: "p-digital",
-    title: "Resistensi adopsi antarmuka baru oleh staf operasional",
-    description: "Perubahan alur input data manual menjadi otomatis memerlukan pembiasaan kerja.",
-    likelihood: "high",
-    impact: "medium",
-    status: "mitigating",
-    mitigationPlan: "Adakan sesi pelatihan interaktif dan sediakan panduan ringkas satu lembar.",
-    ownerName: "Konsultan Teknologi Senior",
-  },
-];
+export const DEFAULT_RISKS: Risk[] = [];
 
-const DEFAULT_OBJECTIVES: Objective[] = [
-  {
-    id: "obj-1",
-    projectId: "p-audit",
-    description: "Memastikan 100% kepatuhan tata kelola sesuai standar OJK dan Good Corporate Governance",
-    targetMetric: "Skor Kepatuhan ≥ 95%",
-  },
-  {
-    id: "obj-2",
-    projectId: "p-digital",
-    description: "Mengurangi waktu manual pelacakan tugas dan proyek hingga 50%",
-    targetMetric: "Efisiensi +50%",
-  },
-];
+export const DEFAULT_OBJECTIVES: Objective[] = [];
 
-const DEFAULT_ACTIVITIES: ProjectActivity[] = [
-  {
-    id: "act-1",
-    projectId: "p-audit",
-    type: "status_changed",
-    fieldChanged: "status",
-    oldValue: "planning",
-    newValue: "active",
-    userName: "Partner Eksekutif",
-    createdAt: new Date(Date.now() - 14 * 86400000).toISOString(),
-  },
-  {
-    id: "act-2",
-    projectId: "p-audit",
-    type: "milestone_achieved",
-    fieldChanged: "milestone",
-    newValue: "Kickoff Meeting & Penerimaan Dokumen Awal",
-    userName: "Senior Auditor Budi",
-    createdAt: new Date(Date.now() - 10 * 86400000).toISOString(),
-  },
-];
+export const DEFAULT_ACTIVITIES: ProjectActivity[] = [];
 
 export const PROJECT_TEMPLATES: ProjectTemplate[] = [
   {
@@ -436,7 +168,16 @@ export function useProjectManager() {
     try {
       const saved = getRaw(PROJECT_STORAGE_KEY);
       if (saved) {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved) as Partial<ProjectManagerState>;
+        return {
+          projects: filterExactSeedRecords(Array.isArray(parsed.projects) ? parsed.projects : [], LEGACY_PROJECT_MANAGER_SEED_FINGERPRINTS.projects, LEGACY_DYNAMIC_SEED_FIELDS),
+          phases: filterExactSeedRecords(Array.isArray(parsed.phases) ? parsed.phases : [], LEGACY_PROJECT_MANAGER_SEED_FINGERPRINTS.phases, LEGACY_DYNAMIC_SEED_FIELDS),
+          milestones: filterExactSeedRecords(Array.isArray(parsed.milestones) ? parsed.milestones : [], LEGACY_PROJECT_MANAGER_SEED_FINGERPRINTS.milestones, LEGACY_DYNAMIC_SEED_FIELDS),
+          members: filterExactSeedRecords(Array.isArray(parsed.members) ? parsed.members : [], LEGACY_PROJECT_MANAGER_SEED_FINGERPRINTS.members, LEGACY_DYNAMIC_SEED_FIELDS),
+          risks: filterExactSeedRecords(Array.isArray(parsed.risks) ? parsed.risks : [], LEGACY_PROJECT_MANAGER_SEED_FINGERPRINTS.risks),
+          objectives: filterExactSeedRecords(Array.isArray(parsed.objectives) ? parsed.objectives : [], LEGACY_PROJECT_MANAGER_SEED_FINGERPRINTS.objectives),
+          activities: filterExactSeedRecords(Array.isArray(parsed.activities) ? parsed.activities : [], LEGACY_PROJECT_MANAGER_SEED_FINGERPRINTS.activities, LEGACY_DYNAMIC_SEED_FIELDS),
+        };
       }
     } catch (e) {
       console.error("Failed to load project manager state", e);
@@ -458,7 +199,11 @@ export function useProjectManager() {
       const saved = getRaw(TASK_STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        return parsed.tasks || [];
+        return filterExactSeedRecords(
+          Array.isArray(parsed.tasks) ? parsed.tasks : [],
+          LEGACY_TASK_MANAGER_SEED_FINGERPRINTS.tasks,
+          LEGACY_DYNAMIC_SEED_FIELDS,
+        );
       }
     } catch (e) {
       console.error("Failed to load tasks for project manager", e);
@@ -482,8 +227,14 @@ export function useProjectManager() {
         const saved = getRaw(TASK_STORAGE_KEY);
         if (saved) {
           const parsed = JSON.parse(saved);
-          if (parsed.tasks) {
-            setTasks(parsed.tasks);
+          if (Array.isArray(parsed.tasks)) {
+            setTasks(
+              filterExactSeedRecords(
+                parsed.tasks,
+                LEGACY_TASK_MANAGER_SEED_FINGERPRINTS.tasks,
+                LEGACY_DYNAMIC_SEED_FIELDS,
+              ),
+            );
           }
         }
       } catch (e) {

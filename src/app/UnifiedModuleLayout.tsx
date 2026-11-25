@@ -391,7 +391,7 @@ export function UnifiedModuleLayout({
         )}
 
       {/* Header Modul (Level 2) */}
-      <div className="px-4 sm:px-6 pt-3 pb-2.5 border-b border-border/60 bg-background">
+      <div data-mobile-module-header="true" className="px-4 sm:px-6 pt-3 pb-2.5 border-b border-border/60 bg-background">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2.5">
           <div className="flex items-center gap-3 min-w-0">
             <div className="size-8 rounded-lg bg-muted/70 border border-border/60 text-foreground/80 flex items-center justify-center shrink-0">
@@ -410,7 +410,7 @@ export function UnifiedModuleLayout({
           </div>
 
           {/* Filter Klien, Proyek, Pencarian, Sortir & Tombol Aksi */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div data-mobile-module-filters="true" className="flex flex-wrap items-center gap-2">
             {availableClients.length > 0 && (
               <div className="relative flex items-center">
                 <Building2 className="size-3.5 text-muted-foreground absolute left-2.5 pointer-events-none" />
@@ -508,7 +508,7 @@ export function UnifiedModuleLayout({
         </div>
 
         {/* Bilah Navigasi Sub-Komponen Level 3 */}
-        <div className="flex items-center gap-1 mt-3.5 overflow-x-auto no-scrollbar pb-0.5">
+        <div data-mobile-module-tabs="true" className="flex items-center gap-1 mt-3.5 overflow-x-auto no-scrollbar pb-0.5">
           {subTabs.map((tab) => {
             const TabIcon = tab.icon;
             const slot = tabs?.[tab.key];
